@@ -347,7 +347,6 @@ public class CardFusionSystem : MonoBehaviour
         UpdateCardPositions();
     }
 
-
     IEnumerator AnimateCardSpawn(GameObject card, Vector3 targetPos)
     {
         if (card == null) yield break;

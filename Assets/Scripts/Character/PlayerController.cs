@@ -260,8 +260,9 @@ public class PlayerController : MonoBehaviour
     {
         CardFusionSystem.Instance?.handPanel.SetActive(true);
         CardFusionSystem.Instance?.slotsPanel.SetActive(false);
-        CardFusionSystem.Instance?.cardManager.hand.Clear();
+
         CardFusionSystem.Instance?.cardManager.hand.AddRange(randomChoices);
+
         CardFusionSystem.Instance?.RefreshHandUI();
 
         while (CardSelectionActive)
