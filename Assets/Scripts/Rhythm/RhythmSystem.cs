@@ -1,0 +1,189 @@
+﻿using UnityEngine;
+using System.Collections.Generic;
+
+public class RhythmSystem : MonoBehaviour
+{
+    public static RhythmSystem Instance;
+
+    [Header("Beat UI References")]
+    public Transform beatPanel;
+    public GameObject beatIconPrefab;
+    public RectTransform spawnPoint;
+    public RectTransform endPoint;
+
+    [Header("Trigger Settings")]
+    public RectTransform triggerPoint;
+    public float triggerDistance = 30f;
+
+    [Header("Icon Sprites")]
+    public Sprite upSprite;
+    public Sprite downSprite;
+    public Sprite leftSprite;
+    public Sprite rightSprite;
+
+    [Header("Timing Settings")]
+    public float perfectTimingWindow = 0.08f;
+    public float minTravelTime = 1.0f;
+    public float maxTravelTime = 2.5f;
+
+    [Header("Enemy Combo Settings")]
+    public int minHitsInCombo = 3;
+    public int maxHitsInCombo = 8;
+    public float minTimeBetweenHits = 0.3f;
+    public float maxTimeBetweenHits = 1.0f;
+    public float attackCooldown = 3f;
+
+    private List<BeatData> activeCombo;
+    private List<BeatIcon> activeIcons = new List<BeatIcon>();
+    private float timeUntilNextAttack;
+    private bool isSpawning = false;
+
+    void Awake()
+    {
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
+        timeUntilNextAttack = attackCooldown;
+    }
+
+    private Sprite GetSpriteForDirection(Direction dir)
+    {
+        return dir switch
+        {
+            Direction.Up => upSprite,
+            Direction.Down => downSprite,
+            Direction.Left => leftSprite,
+            Direction.Right => rightSprite,
+            _ => null
+        };
+    }
+
+    public void StartEnemyComboFromList(List<BeatData> combo, EnemyController enemy)
+    {
+        StartCoroutine(SpawnBeatsSequentially(combo, enemy));
+    }
+
+    private System.Collections.IEnumerator SpawnBeatsSequentially(List<BeatData> combo, EnemyController enemy)
+    {
+        if (isSpawning) yield break;
+        isSpawning = true;
+
+        activeCombo = combo;
+
+        for (int i = 0; i < combo.Count; i++)
+        {
+            BeatData beat = combo[i];
+
+            GameObject go = Instantiate(beatIconPrefab, beatPanel);
+            BeatIcon icon = go.GetComponent<BeatIcon>();
+
+            if (icon == null)
+            {
+                Debug.LogError("BeatIcon component missing on prefab");
+                Destroy(go);
+                EndCombo(false);
+                isSpawning = false;
+                yield break;
+            }
+
+            Vector2 localSpawn, localTrigger, localEnd;
+
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                (RectTransform)beatPanel,
+                RectTransformUtility.WorldToScreenPoint(null, spawnPoint.position),
+                null, out localSpawn);
+
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                (RectTransform)beatPanel,
+                RectTransformUtility.WorldToScreenPoint(null, triggerPoint.position),
+                null, out localTrigger);
+
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                (RectTransform)beatPanel,
+                RectTransformUtility.WorldToScreenPoint(null, endPoint.position),
+                null, out localEnd);
+
+            icon.Initialize(this, beat, localSpawn, localEnd, localTrigger, GetSpriteForDirection(beat.requiredDirection));
+
+            icon.enemy = enemy;
+
+            activeIcons.Add(icon);
+            icon.OnMissed += () => NotifyIconMissed(icon);
+
+            icon.StartMove();
+
+            while (!icon.ReachedTrigger && !icon.hasBeenTriggered)
+                yield return null;
+
+            yield return new WaitForSeconds(Mathf.Clamp(beat.travelDuration, minTimeBetweenHits, maxTimeBetweenHits));
+        }
+
+        yield return new WaitUntil(() => activeIcons.Count == 0);
+        EndCombo(true);
+        isSpawning = false;
+    }
+
+    public void TryParry(Direction pressedDirection)
+    {
+        if (activeIcons.Count == 0) return;
+
+        BeatIcon target = null;
+        float closestDist = float.MaxValue;
+
+        foreach (var icon in activeIcons)
+        {
+            if (icon == null || icon.hasBeenTriggered) continue;
+
+            float dist = Vector3.Distance(icon.RectTransform.localPosition, icon.TriggerPosition);
+            if (dist < closestDist)
+            {
+                closestDist = dist;
+                target = icon;
+            }
+        }
+
+        if (target == null) return;
+
+        if (target.IsWithinTrigger() && pressedDirection == target.requiredDirection)
+        {
+            Debug.Log("Perfect Parry!");
+            PlayerController.Instance?.OnPerfectParry(target.enemy);
+        }
+        else
+        {
+            Debug.Log("Miss Parry!");
+            PlayerController.Instance?.OnMissParry();
+
+            if (target.enemy != null)
+                SoundMeterSystem.Instance?.AddSound(target.enemy.damage);
+        }
+
+        RemoveAndDestroyIcon(target);
+    }
+
+    public void NotifyIconMissed(BeatIcon icon)
+    {
+        if (activeIcons.Contains(icon))
+        {
+            if (!icon.IsWithinTrigger() && icon.enemy != null)
+                SoundMeterSystem.Instance?.AddSound(icon.enemy.damage);
+
+            RemoveAndDestroyIcon(icon);
+        }
+    }
+
+    private void RemoveAndDestroyIcon(BeatIcon icon)
+    {
+        if (icon == null) return;
+        activeIcons.Remove(icon);
+        icon.hasBeenTriggered = true;
+        Destroy(icon.gameObject);
+    }
+
+    public void EndCombo(bool success)
+    {
+        Debug.Log(success ? "Combo Complete!" : "Combo Ended");
+        activeCombo = null;
+        activeIcons.Clear();
+        isSpawning = false;
+    }
+}
