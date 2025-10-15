@@ -44,21 +44,6 @@ public class NewRewardCard : MonoBehaviour
 
     public void Show(List<Card> cardChoices, System.Action<Card> callback)
     {
-        /*if (slots == null || slots.Length != 3 || cardButtonPrefab == null)
-        {
-            Debug.LogError("Slots or prefab not set correctly!");
-            return;
-        }
-
-        if (cardChoices == null || cardChoices.Count == 0)
-        {
-            Debug.LogWarning("No cards to show");
-            return;
-        }
-
-        onCardChosen = callback;
-        currentCards.Clear();*/
-
         for (int i = 0; i < Mathf.Min(3, cardChoices.Count); i++)
             currentCards.Add(cardChoices[i]);
 
