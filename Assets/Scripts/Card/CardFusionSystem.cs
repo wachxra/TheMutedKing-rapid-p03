@@ -42,6 +42,9 @@ public class CardFusionSystem : MonoBehaviour
         Instance = this;
         if (handPanel != null) handPanel.SetActive(false);
         if (slotsPanel != null) slotsPanel.SetActive(false);
+
+        if (cardManager.hand.Count == 0)
+            cardManager.DrawStartingHand();
     }
 
     void Update()
@@ -178,9 +181,6 @@ public class CardFusionSystem : MonoBehaviour
         active = true;
         if (handPanel != null) handPanel.SetActive(true);
         if (slotsPanel != null) slotsPanel.SetActive(true);
-
-        if (cardManager.hand.Count == 0)
-            cardManager.DrawStartingHand();
 
         RefreshHandUI();
     }
