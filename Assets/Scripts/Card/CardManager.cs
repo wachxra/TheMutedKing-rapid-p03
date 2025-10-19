@@ -106,4 +106,22 @@ public class CardManager : MonoBehaviour
 
         return fused;
     }
+
+    public void ShowRewardSelection()
+    {
+        List<Card> rewardCards = new List<Card>();
+        for (int i = 0; i < 3; i++)
+        {
+            Card randomCard = GetRandomCard();
+            if (randomCard != null)
+                rewardCards.Add(randomCard);
+        }
+
+        NewRewardCard.Instance.Show(rewardCards, (chosenCard) =>
+        {
+            hand.Add(chosenCard);
+            Debug.Log($"Reward added: {chosenCard.cardName}");
+            CardFusionSystem.Instance.RefreshHandUI();
+        });
+    }
 }

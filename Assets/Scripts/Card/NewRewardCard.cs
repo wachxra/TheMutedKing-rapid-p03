@@ -44,6 +44,8 @@ public class NewRewardCard : MonoBehaviour
 
     public void Show(List<Card> cardChoices, System.Action<Card> callback)
     {
+        onCardChosen = callback;
+
         for (int i = 0; i < Mathf.Min(3, cardChoices.Count); i++)
             currentCards.Add(cardChoices[i]);
 
