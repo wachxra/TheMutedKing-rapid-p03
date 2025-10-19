@@ -69,9 +69,14 @@ public class RhythmSystem : MonoBehaviour
 
         activeCombo = combo;
 
+        float triggerDistanceRatio = 0.5f;
+        float safeMargin = 0.15f;
+
         for (int i = 0; i < combo.Count; i++)
         {
             BeatData beat = combo[i];
+
+            beat.travelDuration = Random.Range(minTravelTime, maxTravelTime);
 
             GameObject go = Instantiate(beatIconPrefab, beatPanel);
             BeatIcon icon = go.GetComponent<BeatIcon>();
@@ -86,7 +91,6 @@ public class RhythmSystem : MonoBehaviour
             }
 
             Vector2 localSpawn, localTrigger, localEnd;
-
             RectTransformUtility.ScreenPointToLocalPointInRectangle(
                 (RectTransform)beatPanel,
                 RectTransformUtility.WorldToScreenPoint(null, spawnPoint.position),
@@ -103,18 +107,16 @@ public class RhythmSystem : MonoBehaviour
                 null, out localEnd);
 
             icon.Initialize(this, beat, localSpawn, localEnd, localTrigger, GetSpriteForDirection(beat.requiredDirection));
-
             icon.enemy = enemy;
 
             activeIcons.Add(icon);
             icon.OnMissed += () => NotifyIconMissed(icon);
-
             icon.StartMove();
 
-            while (!icon.ReachedTrigger && !icon.hasBeenTriggered)
-                yield return null;
+            float timeUntilReachTrigger = beat.travelDuration * triggerDistanceRatio;
+            float spawnDelay = timeUntilReachTrigger + safeMargin;
 
-            yield return new WaitForSeconds(Mathf.Clamp(beat.travelDuration, minTimeBetweenHits, maxTimeBetweenHits));
+            yield return new WaitForSeconds(spawnDelay);
         }
 
         yield return new WaitUntil(() => activeIcons.Count == 0);

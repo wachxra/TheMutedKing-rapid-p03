@@ -184,7 +184,9 @@ public class PlayerController : MonoBehaviour
 
     public void OnPerfectParry(EnemyController enemy)
     {
+        if (enemy == null) return;
         if (awaitingReward) return;
+
         parryStack++;
         lastEnemyHit = enemy;
 
@@ -192,6 +194,8 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(WaitForEnemyDeathAndOpenReward());
             parryStack = 0;
+
+            CardManager.Instance?.ShowRewardSelection();
         }
     }
 

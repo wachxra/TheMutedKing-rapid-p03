@@ -78,40 +78,20 @@ public class CardFusionSystem : MonoBehaviour
 
     void PlaceFusionCard()
     {
-        if (slots[currentSlotIndex].currentCard == null)
+        if (activeFusionCard == null) return;
+
+        CardSlot currentSlot = slots[currentSlotIndex];
+
+        if (HandleCardPlacement(currentSlot, activeFusionCard))
         {
-            if (HandleCardPlacement(slots[currentSlotIndex], activeFusionCard))
+            GameObject fusedUI = handUI.Count > 0 ? handUI[0] : null;
+
+            if (fusedUI != null && currentSlot.slotTransform != null)
             {
-                if (slots[currentSlotIndex].currentCard != null)
-                {
-                    GameObject fusedUI = handUI.Count > 0 ? handUI[0] : null;
+                fusedUI.transform.SetParent(currentSlot.slotTransform);
+                fusedUI.transform.localPosition = Vector3.zero;
 
-                    if (fusedUI != null)
-                    {
-                        fusedUI.transform.SetParent(slots[currentSlotIndex].slotTransform);
-                        fusedUI.transform.localPosition = Vector3.zero;
-
-                        handUI.Remove(fusedUI);
-                    }
-                }
-            }
-        }
-        else
-        {
-            if (HandleCardPlacement(slots[currentSlotIndex], activeFusionCard))
-            {
-                if (slots[currentSlotIndex].currentCard != null)
-                {
-                    GameObject fusedUI = handUI.Count > 0 ? handUI[0] : null;
-
-                    if (fusedUI != null)
-                    {
-                        fusedUI.transform.SetParent(slots[currentSlotIndex].slotTransform);
-                        fusedUI.transform.localPosition = Vector3.zero;
-
-                        handUI.Remove(fusedUI);
-                    }
-                }
+                handUI.Remove(fusedUI);
             }
         }
 
@@ -122,6 +102,7 @@ public class CardFusionSystem : MonoBehaviour
         {
             PlayerController.Instance.ExitCardMode();
         }
+
         RefreshHandUI();
     }
 
@@ -293,25 +274,28 @@ public class CardFusionSystem : MonoBehaviour
         RefreshHandUI();
     }
 
-    public void RefreshHandUI()
+    public void RefreshHandUI(bool keepExistingHandUI = false)
     {
         if (handPanel == null) return;
 
         StopAllCoroutines();
 
-        foreach (GameObject go in handUI)
+        if (!keepExistingHandUI)
         {
-            if (go != null)
+            foreach (GameObject go in handUI)
             {
-                Destroy(go);
+                if (go != null)
+                {
+                    Destroy(go);
+                }
             }
+            handUI.Clear();
         }
-        handUI.Clear();
 
-
-        if (isMovingFusionCard && activeFusionCard != null)
+        if (isMovingFusionCard && activeFusionCard != null && !handUI.Contains(handUI.Find(go => go.name == activeFusionCard.cardName)))
         {
             GameObject go = Instantiate(cardPrefab, handPanel.transform);
+            go.name = activeFusionCard.cardName;
             Image img = go.GetComponent<Image>();
             if (img != null) img.sprite = activeFusionCard.cardSprite;
 
@@ -321,31 +305,33 @@ public class CardFusionSystem : MonoBehaviour
 
         if (cardManager.hand.Count == 0 && !isMovingFusionCard) return;
 
-        if (cardManager.hand.Count > maxHandCount)
-            cardManager.hand = cardManager.hand.GetRange(0, maxHandCount);
-
         float totalWidth = (cardManager.hand.Count - 1) * cardSpacing;
         float startX = -totalWidth / 2f;
 
         for (int i = 0; i < cardManager.hand.Count; i++)
         {
             Card c = cardManager.hand[i];
-            GameObject go = Instantiate(cardPrefab, handPanel.transform);
-            Image img = go.GetComponent<Image>();
-            if (img != null) img.sprite = c.cardSprite;
 
-            go.transform.localPosition = Vector3.zero;
+            if (!handUI.Exists(go => go.name == c.cardName))
+            {
+                GameObject go = Instantiate(cardPrefab, handPanel.transform);
+                go.name = c.cardName;
+                Image img = go.GetComponent<Image>();
+                if (img != null) img.sprite = c.cardSprite;
+                go.transform.localPosition = Vector3.zero;
 
-            handUI.Add(go);
+                handUI.Add(go);
 
-            Vector3 targetPos = new Vector3(startX + i * cardSpacing, 0, 0);
-            StartCoroutine(AnimateCardSpawn(go, targetPos));
+                Vector3 targetPos = new Vector3(startX + i * cardSpacing, 0, 0);
+                StartCoroutine(AnimateCardSpawn(go, targetPos));
+            }
         }
 
         if (currentIndex >= cardManager.hand.Count) currentIndex = 0;
 
         UpdateCardPositions();
     }
+
 
     IEnumerator AnimateCardSpawn(GameObject card, Vector3 targetPos)
     {

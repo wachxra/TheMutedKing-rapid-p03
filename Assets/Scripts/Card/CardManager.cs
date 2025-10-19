@@ -11,6 +11,8 @@ public class FusionResult
 
 public class CardManager : MonoBehaviour
 {
+    public static CardManager Instance;
+
     public List<Card> deck = new List<Card>();
     public List<Card> hand = new List<Card>();
     public int startingHandCount = 5;
@@ -121,7 +123,7 @@ public class CardManager : MonoBehaviour
         {
             hand.Add(chosenCard);
             Debug.Log($"Reward added: {chosenCard.cardName}");
-            CardFusionSystem.Instance.RefreshHandUI();
+            CardFusionSystem.Instance.RefreshHandUI(true);
         });
     }
 }
