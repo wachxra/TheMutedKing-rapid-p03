@@ -84,7 +84,7 @@ public class CardFusionSystem : MonoBehaviour
 
         if (HandleCardPlacement(currentSlot, activeFusionCard))
         {
-            GameObject fusedUI = handUI.Count > 0 ? handUI[0] : null;
+            GameObject fusedUI = handUI.Find(go => go.name == activeFusionCard.cardName);
 
             if (fusedUI != null && currentSlot.slotTransform != null)
             {
@@ -92,6 +92,7 @@ public class CardFusionSystem : MonoBehaviour
                 fusedUI.transform.localPosition = Vector3.zero;
 
                 handUI.Remove(fusedUI);
+                Destroy(fusedUI);
             }
         }
 
@@ -123,23 +124,11 @@ public class CardFusionSystem : MonoBehaviour
             Debug.Log($"King Slot used: {card.cardName}. (Damage/Silence: {card.damage}/{card.silence}).");
 
             if (KingController.Instance != null)
-            {
                 KingController.Instance.TakeDamage(card.damage);
-            }
 
-            if (SoundMeterSystem.Instance != null)
-            {
-                if (card.silence > 0)
-                {
-                    SoundMeterSystem.Instance.AddSound(card.silence);
-                }
-            }
+            if (SoundMeterSystem.Instance != null && card.silence > 0)
+                SoundMeterSystem.Instance.AddSound(card.silence);
 
-            if (fusedUI != null)
-            {
-                handUI.Remove(fusedUI);
-                Destroy(fusedUI);
-            }
             slot.currentCard = null;
             return true;
         }
