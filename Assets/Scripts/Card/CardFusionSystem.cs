@@ -92,7 +92,11 @@ public class CardFusionSystem : MonoBehaviour
                 fusedUI.transform.localPosition = Vector3.zero;
 
                 handUI.Remove(fusedUI);
-                Destroy(fusedUI);
+
+                if (currentSlot.slotType == CardSlotType.KingSlot)
+                {
+                    Destroy(fusedUI);
+                }
             }
         }
 

@@ -45,36 +45,22 @@ public class CardManager : MonoBehaviour
 
         Card typeA_card = GetRandomCardByType(CardType.TypeA);
         if (typeA_card != null)
-        {
             hand.Add(typeA_card);
-        }
-        else
-        {
-            Debug.LogError("Deck does not contain any CardType.TypeA cards!");
-        }
 
         Card typeB_card = GetRandomCardByType(CardType.TypeB);
         if (typeB_card != null)
-        {
             hand.Add(typeB_card);
-        }
-        else
-        {
-            Debug.LogError("Deck does not contain any CardType.TypeB cards!");
-        }
 
         int remainingDraws = startingHandCount - hand.Count;
+        List<Card> availableCards = new List<Card>(deck);
+        availableCards.RemoveAll(c => hand.Exists(h => h.cardName == c.cardName));
 
-        for (int i = 0; i < remainingDraws; i++)
+        for (int i = 0; i < remainingDraws && availableCards.Count > 0; i++)
         {
-            Card c = GetRandomCard();
-            if (c != null)
-                hand.Add(c);
-        }
-
-        if (hand.Count > startingHandCount)
-        {
-            hand.RemoveRange(startingHandCount, hand.Count - startingHandCount);
+            int index = Random.Range(0, availableCards.Count);
+            Card c = availableCards[index].Clone();
+            hand.Add(c);
+            availableCards.RemoveAt(index);
         }
 
         Debug.Log($"Starting hand: {hand.Count} cards");
