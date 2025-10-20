@@ -109,7 +109,7 @@ public class CardManager : MonoBehaviour
         {
             hand.Add(chosenCard);
             Debug.Log($"Reward added: {chosenCard.cardName}");
-            CardFusionSystem.Instance.RefreshHandUI(true);
+            CardFusionSystem.Instance.RefreshHandUI(false);
         });
     }
 }

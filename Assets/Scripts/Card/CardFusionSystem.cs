@@ -279,44 +279,49 @@ public class CardFusionSystem : MonoBehaviour
             foreach (GameObject go in handUI)
             {
                 if (go != null)
-                {
                     Destroy(go);
-                }
             }
             handUI.Clear();
         }
 
-        if (isMovingFusionCard && activeFusionCard != null && !handUI.Exists(go => go.name == activeFusionCard.cardName))
+        if (isMovingFusionCard && activeFusionCard != null)
         {
-            GameObject go = Instantiate(cardPrefab, handPanel.transform);
-            go.name = activeFusionCard.cardName;
-            Image img = go.GetComponent<Image>();
-            if (img != null) img.sprite = activeFusionCard.cardSprite;
-
-            go.transform.localPosition = Vector3.zero;
-            handUI.Add(go);
-        }
-
-        if (cardManager.hand.Count == 0 && !isMovingFusionCard) return;
-
-        float totalWidth = (cardManager.hand.Count - 1) * cardSpacing;
-        float startX = -totalWidth / 2f;
-
-        for (int i = 0; i < cardManager.hand.Count; i++)
-        {
-            Card c = cardManager.hand[i];
-
-            if (!handUI.Exists(go => go.name == c.cardName))
+            bool exists = handUI.Exists(go => go != null && go.name == activeFusionCard.cardName);
+            if (!exists)
             {
                 GameObject go = Instantiate(cardPrefab, handPanel.transform);
-                go.name = c.cardName;
+                go.name = activeFusionCard.cardName;
+
                 Image img = go.GetComponent<Image>();
-                if (img != null) img.sprite = c.cardSprite;
+                if (img != null) img.sprite = activeFusionCard.cardSprite;
 
                 handUI.Add(go);
+            }
+        }
 
-                Vector3 targetPos = new Vector3(startX + i * cardSpacing, 0, 0);
-                StartCoroutine(AnimateCardSpawn(go, targetPos));
+        if (cardManager.hand.Count > 0)
+        {
+            float totalWidth = (cardManager.hand.Count - 1) * cardSpacing;
+            float startX = -totalWidth / 2f;
+
+            for (int i = 0; i < cardManager.hand.Count; i++)
+            {
+                Card c = cardManager.hand[i];
+
+                bool exists = handUI.Exists(go => go != null && go.name == c.cardName);
+                if (!exists)
+                {
+                    GameObject go = Instantiate(cardPrefab, handPanel.transform);
+                    go.name = c.cardName;
+
+                    Image img = go.GetComponent<Image>();
+                    if (img != null) img.sprite = c.cardSprite;
+
+                    handUI.Add(go);
+
+                    Vector3 targetPos = new Vector3(startX + i * cardSpacing, 0, 0);
+                    StartCoroutine(AnimateCardSpawn(go, targetPos));
+                }
             }
         }
 

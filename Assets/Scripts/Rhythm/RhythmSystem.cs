@@ -45,6 +45,25 @@ public class RhythmSystem : MonoBehaviour
         timeUntilNextAttack = attackCooldown;
     }
 
+    void Update()
+    {
+        for (int i = activeIcons.Count - 1; i >= 0; i--)
+        {
+            BeatIcon icon = activeIcons[i];
+            if (icon == null)
+            {
+                activeIcons.RemoveAt(i);
+                continue;
+            }
+
+            // เช็กว่า enemy ตายหรือถูกทำลาย
+            if (icon.enemy == null || icon.enemy.currentHP <= 0)
+            {
+                RemoveAndDestroyIcon(icon); // ฟังก์ชันนี้ลบออกจาก activeIcons และ Destroy gameObject
+            }
+        }
+    }
+
     private Sprite GetSpriteForDirection(Direction dir)
     {
         return dir switch
