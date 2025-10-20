@@ -184,6 +184,7 @@ public class RhythmSystem : MonoBehaviour
     public void EndCombo(bool success)
     {
         Debug.Log(success ? "Combo Complete!" : "Combo Ended");
+
         activeCombo = null;
         activeIcons.Clear();
         isSpawning = false;

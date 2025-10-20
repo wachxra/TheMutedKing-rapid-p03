@@ -63,6 +63,8 @@ public class NewRewardCard : MonoBehaviour
                 {
                     rt.localScale = Vector3.one;
                     rt.localPosition = Vector3.zero;
+
+                    rt.sizeDelta = new Vector2(1200, 800);
                 }
 
                 Image img = cardObj.GetComponent<Image>();
@@ -71,11 +73,12 @@ public class NewRewardCard : MonoBehaviour
                 if (img != null && currentCards[i].cardSprite != null)
                 {
                     img.sprite = currentCards[i].cardSprite;
-                    img.preserveAspect = true;
+                    img.preserveAspect = false;
                 }
                 if (txt != null)
                     txt.text = currentCards[i].cardName;
             }
+
         }
 
         selectedIndex = 0;
