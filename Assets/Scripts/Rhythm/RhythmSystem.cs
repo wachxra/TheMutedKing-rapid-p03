@@ -172,7 +172,6 @@ public class RhythmSystem : MonoBehaviour
         else
         {
             Debug.Log("Miss Parry!");
-            PlayerController.Instance?.OnMissParry();
 
             if (target.enemy != null)
                 SoundMeterSystem.Instance?.AddSound(target.enemy.damage);

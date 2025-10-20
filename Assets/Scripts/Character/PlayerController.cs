@@ -193,15 +193,7 @@ public class PlayerController : MonoBehaviour
         if (parryStack >= requiredParryStacks)
         {
             StartCoroutine(WaitForEnemyDeathAndOpenReward());
-            parryStack = 0;
-
-            CardManager.Instance?.ShowRewardSelection();
         }
-    }
-
-    public void OnMissParry()
-    {
-        parryStack = 0;
     }
 
     private IEnumerator WaitForEnemyDeathAndOpenReward()
@@ -230,12 +222,16 @@ public class PlayerController : MonoBehaviour
                 cardManager.hand.Add(chosen.Clone());
                 CardFusionSystem.Instance?.RefreshHandUI();
                 Debug.Log($"Received new card: {chosen.cardName}");
+
+                parryStack = 0;
+
+                awaitingReward = false;
+
+                CardSelectionActive = false;
             }
         });
 
         yield return new WaitUntil(() => !CardSelectionActive);
-
-        awaitingReward = false;
     }
 
     private bool CardSelectionActive = false;
