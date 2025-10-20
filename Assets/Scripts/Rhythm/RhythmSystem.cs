@@ -56,10 +56,9 @@ public class RhythmSystem : MonoBehaviour
                 continue;
             }
 
-            // เช็กว่า enemy ตายหรือถูกทำลาย
             if (icon.enemy == null || icon.enemy.currentHP <= 0)
             {
-                RemoveAndDestroyIcon(icon); // ฟังก์ชันนี้ลบออกจาก activeIcons และ Destroy gameObject
+                RemoveAndDestroyIcon(icon);
             }
         }
     }

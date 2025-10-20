@@ -31,6 +31,10 @@ public class EnemySpawner : MonoBehaviour
 
         currentEnemy = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
 
+        currentEnemy.transform.SetParent(GroundController.Instance.transform);
+
+        currentEnemy.tag = "Enemy";
+
         EnemyController enemy = currentEnemy.GetComponent<EnemyController>();
         if (enemy != null)
         {

@@ -10,7 +10,8 @@ public class PlayerController : MonoBehaviour
     [Header("Movement")]
     public float moveSpeed = 5f;
     private Rigidbody2D rb;
-    private float moveInput;
+    public float moveInput;
+    public bool canMove = true;
 
     [Header("Attack")]
     public Collider2D attackHitbox;
@@ -18,6 +19,11 @@ public class PlayerController : MonoBehaviour
     public float defaultSilenceDamage = 0f;
     public float attackCooldown = 0.5f;
     private float timeUntilNextAttack = 0f;
+
+    [Header("Backtracking Control")]
+    public float backtrackTimeLimit = 2.0f;
+    private float backtrackTimer = 0f;
+    private bool isMovingForward = true;
 
     [Header("Other")]
     public bool isInCardMode = false;
@@ -44,16 +50,10 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         HandleInput();
+        MoveWhenIdle();
+        UpdateBacktrackTimer();
         if (timeUntilNextAttack > 0f)
             timeUntilNextAttack -= Time.deltaTime;
-    }
-
-    void FixedUpdate()
-    {
-        if (!isInCardMode && !isParrying)
-            Move();
-        else
-            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
     }
 
     void HandleInput()
@@ -73,8 +73,11 @@ public class PlayerController : MonoBehaviour
 
         if (isInCardMode) return;
 
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
-            Move();
+        if (canMove)
+        {
+            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+                Move();
+        }
 
         if (Input.GetKeyDown(KeyCode.Space))
             AttackWithWeapon();
@@ -91,9 +94,89 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.A)) m = -1f;
         if (Input.GetKey(KeyCode.D)) m = 1f;
         moveInput = m;
-        rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
+
+        if (moveInput > 0) isMovingForward = true;
+        else if (moveInput < 0) isMovingForward = false;
+
+        if (GroundController.Instance != null)
+        {
+            GroundController.Instance.SetMovement(moveInput * moveSpeed);
+        }
+
         if (animator != null) animator.SetFloat("Speed", Mathf.Abs(moveInput));
-        if (moveInput != 0f) transform.localScale = new Vector3(Mathf.Sign(moveInput), 1f, 1f);
+
+        if (moveInput != 0f)
+        {
+            Vector3 localScale = transform.localScale;
+            localScale.x = Mathf.Abs(localScale.x) * (moveInput > 0 ? 1 : -1);
+            transform.localScale = localScale;
+        }
+    }
+
+    void MoveWhenIdle()
+    {
+        if (!canMove)
+        {
+            if (GroundController.Instance != null)
+            {
+                GroundController.Instance.SetMovement(0f);
+            }
+            if (animator != null) animator.SetFloat("Speed", 0f);
+            return;
+        }
+
+        bool isMovingInput = Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D);
+
+        if (!isMovingInput)
+        {
+            if (GroundController.Instance != null && GroundController.Instance.currentMoveSpeed != 0f)
+            {
+                GroundController.Instance.SetMovement(0f);
+            }
+
+            if (animator != null) animator.SetFloat("Speed", 0f);
+        }
+    }
+
+    void UpdateBacktrackTimer()
+    {
+        if (isInCardMode) return;
+
+        if (isMovingForward || Input.GetKey(KeyCode.D))
+        {
+            backtrackTimer = 0f;
+            canMove = true;
+        }
+        else if (Input.GetKey(KeyCode.A))
+        {
+            backtrackTimer += Time.deltaTime;
+
+            if (backtrackTimer >= backtrackTimeLimit)
+            {
+                GroundController.Instance?.SpawnWall();
+            }
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        EnemyController enemy = collision.gameObject.GetComponent<EnemyController>();
+
+        if (enemy != null)
+        {
+            Vector2 pushDirection = (transform.position - enemy.transform.position).normalized;
+            float pushForce = 5f;
+
+            rb.AddForce(pushDirection * pushForce, ForceMode2D.Force);
+        }
+
+        if (GroundController.Instance != null && GroundController.Instance.currentWall != null &&
+            collision.gameObject == GroundController.Instance.currentWall)
+        {
+            canMove = false;
+            GroundController.Instance.SetMovement(0f);
+            if (animator != null) animator.SetFloat("Speed", 0f);
+        }
     }
 
     void AttackWithWeapon()

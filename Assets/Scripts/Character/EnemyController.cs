@@ -44,13 +44,26 @@ public class EnemyController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (player == null) return;
+        if (player == null || PlayerController.Instance == null) return;
 
         float distance = Mathf.Abs(player.position.x - transform.position.x);
 
         if (distance > detectRange)
         {
-            float dirX = player.position.x > transform.position.x ? 1f : -1f;
+            float dirX = 0f;
+
+            bool playerMovingBackward = PlayerController.Instance.moveInput < 0f;
+            bool playerCannotMove = !PlayerController.Instance.canMove;
+
+            if (playerMovingBackward && !playerCannotMove)
+            {
+                dirX = player.position.x > transform.position.x ? -1f : 1f;
+            }
+            else
+            {
+                dirX = player.position.x > transform.position.x ? 1f : -1f;
+            }
+
             Vector2 newPos = rb.position + new Vector2(dirX * moveSpeed * Time.fixedDeltaTime, 0f);
             rb.MovePosition(newPos);
         }
@@ -58,7 +71,7 @@ public class EnemyController : MonoBehaviour
         {
             if (timeUntilNextAttack > 0)
             {
-                timeUntilNextAttack -= Time.deltaTime;
+                timeUntilNextAttack -= Time.fixedDeltaTime;
             }
             else
             {
