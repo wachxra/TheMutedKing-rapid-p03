@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 
 public class EnemyController : MonoBehaviour
@@ -52,12 +52,9 @@ public class EnemyController : MonoBehaviour
         {
             float dirX = 0f;
 
-            bool playerMovingBackward = PlayerController.Instance.moveInput < 0f;
-            bool playerCannotMove = !PlayerController.Instance.canMove;
-
-            if (playerMovingBackward && !playerCannotMove)
+            if (Input.GetKey(KeyCode.A))
             {
-                dirX = player.position.x > transform.position.x ? -1f : 1f;
+                dirX = 1f;
             }
             else
             {
