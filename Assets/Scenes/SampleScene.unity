@@ -812,6 +812,60 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &520093408
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 520093410}
+  - component: {fileID: 520093409}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &520093409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520093408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13ccf7efa61343d49bd62284e76b74aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManager
+  sfxSounds:
+  - name: PerfectParry
+    clip: {fileID: 8300000, guid: 3c900dda0b65d974c9597432818106ab, type: 3}
+    volume: 1
+    loop: 0
+  - name: Attack
+    clip: {fileID: 8300000, guid: 6d8478b76c4491d4c8656f0e6198b001, type: 3}
+    volume: 1
+    loop: 0
+  musicSounds: []
+--- !u!4 &520093410
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520093408}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.99744, y: -0.02279, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &558602135
 GameObject:
   m_ObjectHideFlags: 0
@@ -1654,7 +1708,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &944652923
 Transform:
   m_ObjectHideFlags: 0
@@ -1908,7 +1962,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1085668341
 Transform:
   m_ObjectHideFlags: 0
@@ -2919,72 +2973,72 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardManager
   deck:
   - cardName: 1
-    damage: 3
-    silence: 2
-    cardSprite: {fileID: 21300000, guid: 50caaeee0b367b4409c2b764d26888b6, type: 3}
+    damage: 4
+    silence: 3
+    cardSprite: {fileID: 21300000, guid: ed9cf08cb520d9742ae5413681770709, type: 3}
     slotType: 0
     cardType: 0
     isSelected: 0
   - cardName: 2
-    damage: 5
-    silence: 5
-    cardSprite: {fileID: 21300000, guid: 80741ed90c8f14449baa55a4c925a1a4, type: 3}
+    damage: 3
+    silence: 2
+    cardSprite: {fileID: 21300000, guid: 79eb4b36d1216ff4bbb74fca9c97790d, type: 3}
     slotType: 0
     cardType: 0
     isSelected: 0
   - cardName: 3
-    damage: 2
-    silence: 1
-    cardSprite: {fileID: 21300000, guid: 68795bc6376d8d2409bb9946e27a942d, type: 3}
+    damage: 1
+    silence: -2
+    cardSprite: {fileID: 21300000, guid: 05ca4c96aa587624483da04f292b75de, type: 3}
     slotType: 0
     cardType: 0
     isSelected: 0
   - cardName: 4
-    damage: 4
-    silence: 3
-    cardSprite: {fileID: 21300000, guid: c59220f4511bce94b81e13d3a40af67b, type: 3}
+    damage: 2
+    silence: 1
+    cardSprite: {fileID: 21300000, guid: 424baa29c712ddd43a79311f9c8f5775, type: 3}
     slotType: 0
     cardType: 0
     isSelected: 0
   - cardName: 5
-    damage: 1
-    silence: -2
-    cardSprite: {fileID: 21300000, guid: 28b4d49c47920d54b848d4a393022e11, type: 3}
+    damage: 5
+    silence: 5
+    cardSprite: {fileID: 21300000, guid: a1b9e4143de797a49a107ec384d6abd0, type: 3}
     slotType: 0
     cardType: 0
     isSelected: 0
   - cardName: 6
-    damage: 1
-    silence: -1
-    cardSprite: {fileID: 21300000, guid: a0d835f113c50b04c8cbee6d0e816c55, type: 3}
+    damage: 0
+    silence: -2
+    cardSprite: {fileID: 21300000, guid: 753b4c7cf96bd4b4f92254608f4e0117, type: 3}
     slotType: 0
     cardType: 1
     isSelected: 0
   - cardName: 7
-    damage: 2
-    silence: 1
-    cardSprite: {fileID: 21300000, guid: 99354ea58c37cf840be6f849b384e706, type: 3}
+    damage: -1
+    silence: -3
+    cardSprite: {fileID: 21300000, guid: 3c29f980dab57fb4aa65260f861fdaa7, type: 3}
     slotType: 0
     cardType: 1
     isSelected: 0
   - cardName: 8
-    damage: 0
-    silence: -2
-    cardSprite: {fileID: 21300000, guid: 51f9b3ac36293a34e90f05665a533dbd, type: 3}
+    damage: 2
+    silence: 1
+    cardSprite: {fileID: 21300000, guid: 78e363877018af347a90feba0d92397e, type: 3}
     slotType: 0
     cardType: 1
     isSelected: 0
   - cardName: 9
     damage: 3
     silence: 2
-    cardSprite: {fileID: 21300000, guid: 3b5a9cf43fd7382488e83267a7b0476b, type: 3}
+    cardSprite: {fileID: 21300000, guid: 31f8d743a74870d4fa536a7a49b8b10a, type: 3}
     slotType: 0
     cardType: 1
     isSelected: 0
   - cardName: 10
-    damage: -1
-    silence: -3
-    cardSprite: {fileID: 21300000, guid: 4dd2c07e0795b414db04dbfd61a934ca, type: 3}
+    damage: 1
+    silence: -1
+    cardSprite: {fileID: 21300000, guid: 93ce5f156e4f27145a31331c089e8cd4, type: 3}
     slotType: 0
     cardType: 1
     isSelected: 0
@@ -2992,20 +3046,80 @@ MonoBehaviour:
   startingHandCount: 3
   fusionTable:
   - cardAName: 1
-    cardBName: 1
-    resultSprite: {fileID: 21300000, guid: a1be327e51d2d9a4b9e79b775525730a, type: 3}
+    cardBName: 6
+    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
   - cardAName: 1
-    cardBName: 2
-    resultSprite: {fileID: 21300000, guid: 3d766f1531679be4eaf370d3755f06fb, type: 3}
+    cardBName: 7
+    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
   - cardAName: 1
-    cardBName: 3
-    resultSprite: {fileID: 21300000, guid: a1be327e51d2d9a4b9e79b775525730a, type: 3}
+    cardBName: 8
+    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
   - cardAName: 1
-    cardBName: 4
-    resultSprite: {fileID: 21300000, guid: a1be327e51d2d9a4b9e79b775525730a, type: 3}
+    cardBName: 9
+    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
   - cardAName: 1
-    cardBName: 5
-    resultSprite: {fileID: 21300000, guid: a1be327e51d2d9a4b9e79b775525730a, type: 3}
+    cardBName: 10
+    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
+  - cardAName: 2
+    cardBName: 6
+    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
+  - cardAName: 2
+    cardBName: 7
+    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
+  - cardAName: 2
+    cardBName: 8
+    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
+  - cardAName: 2
+    cardBName: 9
+    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
+  - cardAName: 2
+    cardBName: 10
+    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
+  - cardAName: 3
+    cardBName: 6
+    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
+  - cardAName: 3
+    cardBName: 7
+    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
+  - cardAName: 3
+    cardBName: 8
+    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
+  - cardAName: 3
+    cardBName: 9
+    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
+  - cardAName: 3
+    cardBName: 10
+    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
+  - cardAName: 4
+    cardBName: 6
+    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
+  - cardAName: 4
+    cardBName: 7
+    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
+  - cardAName: 4
+    cardBName: 8
+    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
+  - cardAName: 4
+    cardBName: 9
+    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
+  - cardAName: 4
+    cardBName: 10
+    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
+  - cardAName: 5
+    cardBName: 6
+    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
+  - cardAName: 5
+    cardBName: 10
+    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
+  - cardAName: 5
+    cardBName: 10
+    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
+  - cardAName: 5
+    cardBName: 9
+    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
+  - cardAName: 5
+    cardBName: 10
+    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
 --- !u!4 &1797229346
 Transform:
   m_ObjectHideFlags: 0
@@ -3755,6 +3869,10 @@ PrefabInstance:
       propertyPath: soundMeterUI
       value: 
       objectReference: {fileID: 590409146}
+    - target: {fileID: 815212601682451392, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: attackCooldown
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1099827394276325184, guid: d24e595739d088c46b9ad8991df42182, type: 3}
       propertyPath: playerHPSlider
       value: 
@@ -3843,3 +3961,4 @@ SceneRoots:
   - {fileID: 110012939}
   - {fileID: 1785161823}
   - {fileID: 686130805}
+  - {fileID: 520093410}

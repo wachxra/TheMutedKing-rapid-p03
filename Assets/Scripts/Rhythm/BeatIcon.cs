@@ -71,6 +71,7 @@ public class BeatIcon : MonoBehaviour
         if (t >= 1f && !hasBeenTriggered)
         {
             hasBeenTriggered = true;
+            AudioManager.Instance?.PlaySFX("Attack");
             OnMissed?.Invoke();
             Destroy(gameObject, 0.05f);
         }

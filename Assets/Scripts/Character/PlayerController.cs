@@ -209,6 +209,8 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        AudioManager.Instance?.PlaySFX("Attack");
+
         if (attackHitbox != null)
             StartCoroutine(HandleAttackHitbox(attackDamage, attackSound));
         else

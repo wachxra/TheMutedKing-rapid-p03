@@ -166,11 +166,13 @@ public class RhythmSystem : MonoBehaviour
         if (target.IsWithinTrigger() && pressedDirection == target.requiredDirection)
         {
             Debug.Log("Perfect Parry!");
+            AudioManager.Instance?.PlaySFX("PerfectParry");
             PlayerController.Instance?.OnPerfectParry(target.enemy);
         }
         else
         {
             Debug.Log("Miss Parry!");
+            AudioManager.Instance?.PlaySFX("Attack");
 
             if (target.enemy != null)
                 SoundMeterSystem.Instance?.AddSound(target.enemy.damage);
