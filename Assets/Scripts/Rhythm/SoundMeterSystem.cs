@@ -1,33 +1,35 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class SoundMeterSystem : MonoBehaviour
 {
     public static SoundMeterSystem Instance;
 
     public Transform player;
-    public Slider soundDetectorSlider;
     public Slider playerHPSlider;
 
-    public float detectRadius = 5f;
-    public int currentSound = 0;
+    [Header("Player HP (0-100)")]
+    public int currentSoundPlayerHP = 0;
     public int maxSoundPlayerHP = 100;
     public float maxSoundDetector = 10f;
     public float decayRate = 0f;
     public bool isGameOver = false;
+
+    [Header("Detected Sound (0-10)")]
+    public Image detectedSoundImage;
+    public TextMeshProUGUI detectedSoundText;
+    public Sprite[] soundLevelSprites = new Sprite[11];
+
+    public float detectRadius = 5f;
+    private int currentDetectedLevel = 0;
+    public int maxDetectedSoundLevel = 10;
 
     private bool isVisible = false;
 
     void Awake()
     {
         Instance = this;
-        if (soundDetectorSlider != null)
-        {
-            soundDetectorSlider.gameObject.SetActive(false);
-            soundDetectorSlider.minValue = 0f;
-            soundDetectorSlider.maxValue = maxSoundDetector;
-            soundDetectorSlider.value = 0f;
-        }
 
         if (playerHPSlider != null)
         {
@@ -35,18 +37,29 @@ public class SoundMeterSystem : MonoBehaviour
             playerHPSlider.maxValue = maxSoundPlayerHP;
             playerHPSlider.value = 0f;
         }
+
+        if (detectedSoundImage != null)
+            detectedSoundImage.gameObject.SetActive(false);
+        if (detectedSoundText != null)
+            detectedSoundText.gameObject.SetActive(false);
+
+        UpdateAccumulatedUI();
+        UpdateDetectedUI();
     }
 
     void Update()
     {
         if (isVisible && player != null)
-            CalculateSoundAroundPlayer();
+        {
+            CalculateDetectedSound();
+            UpdateDetectedUI();
+        }
 
         if (decayRate > 0 && !isGameOver)
         {
-            currentSound -= Mathf.FloorToInt(decayRate * Time.deltaTime);
-            currentSound = Mathf.Clamp(currentSound, 0, maxSoundPlayerHP);
-            UpdateUI();
+            currentSoundPlayerHP -= Mathf.FloorToInt(decayRate * Time.deltaTime);
+            currentSoundPlayerHP = Mathf.Clamp(currentSoundPlayerHP, 0, maxSoundPlayerHP);
+            UpdateAccumulatedUI();
         }
 
         if (CardFusionSystem.Instance != null && PlayerController.Instance != null && !PlayerController.Instance.isInCardMode)
@@ -72,15 +85,40 @@ public class SoundMeterSystem : MonoBehaviour
     public void ToggleMeter()
     {
         isVisible = !isVisible;
-        if (soundDetectorSlider != null)
-            soundDetectorSlider.gameObject.SetActive(isVisible);
+
+        if (detectedSoundImage != null)
+            detectedSoundImage.gameObject.SetActive(isVisible);
+        if (detectedSoundText != null)
+            detectedSoundText.gameObject.SetActive(isVisible);
+
         if (isVisible)
+        {
+            CalculateDetectedSound();
+            UpdateDetectedUI();
+
             CalculateSoundAroundPlayer();
+        }
+    }
+
+    void CalculateDetectedSound()
+    {
+        if (player == null) return;
+
+        Collider2D[] hits = Physics2D.OverlapCircleAll(player.position, detectRadius);
+        int totalSound = 0;
+
+        foreach (var hit in hits)
+        {
+            SoundObstacle obstacle = hit.GetComponent<SoundObstacle>();
+            if (obstacle != null)
+                totalSound += obstacle.soundValue;
+        }
+
+        currentDetectedLevel = Mathf.Clamp(totalSound, 0, maxDetectedSoundLevel);
     }
 
     void CalculateSoundAroundPlayer()
     {
-        if (player == null || soundDetectorSlider == null) return;
         Collider2D[] hits = Physics2D.OverlapCircleAll(player.position, detectRadius);
         float totalSound = 0f;
         foreach (var hit in hits)
@@ -89,24 +127,39 @@ public class SoundMeterSystem : MonoBehaviour
             if (obstacle != null)
                 totalSound += obstacle.soundValue;
         }
-        soundDetectorSlider.value = Mathf.Clamp(totalSound, 0f, maxSoundDetector);
     }
 
     public void AddSound(float amount)
     {
         if (isGameOver) return;
 
-        currentSound += Mathf.RoundToInt(amount);
-        currentSound = Mathf.Clamp(currentSound, 0, maxSoundPlayerHP);
-        UpdateUI();
-        if (currentSound >= maxSoundPlayerHP)
+        currentSoundPlayerHP += Mathf.RoundToInt(amount);
+        currentSoundPlayerHP = Mathf.Clamp(currentSoundPlayerHP, 0, maxSoundPlayerHP);
+        UpdateAccumulatedUI();
+
+        if (currentSoundPlayerHP >= maxSoundPlayerHP)
             TriggerGameOver();
     }
 
-    void UpdateUI()
+    void UpdateDetectedUI()
+    {
+        int spriteIndex = currentDetectedLevel;
+
+        if (detectedSoundImage != null && soundLevelSprites != null && soundLevelSprites.Length > spriteIndex)
+        {
+            detectedSoundImage.sprite = soundLevelSprites[spriteIndex];
+        }
+
+        if (detectedSoundText != null)
+        {
+            detectedSoundText.text = $"{spriteIndex}";
+        }
+    }
+
+    void UpdateAccumulatedUI()
     {
         if (playerHPSlider != null)
-            playerHPSlider.value = currentSound;
+            playerHPSlider.value = currentSoundPlayerHP;
     }
 
     void TriggerGameOver()
@@ -125,7 +178,7 @@ public class SoundMeterSystem : MonoBehaviour
     {
         if (player != null)
         {
-            Gizmos.color = Color.red;
+            Gizmos.color = Color.cyan;
             Gizmos.DrawWireSphere(player.position, detectRadius);
         }
     }
