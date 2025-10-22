@@ -34,6 +34,9 @@ public class PlayerController : MonoBehaviour
     public CardManager cardManager;
     public RhythmSystem rhythmSystem;
 
+    [Header("UI References")]
+    public ParryStackUI parryStackUI;
+
     void Awake()
     {
         if (Instance == null) Instance = this;
@@ -45,6 +48,15 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         if (soundMeterUI != null) soundMeterUI.SetActive(false);
         if (attackHitbox != null) attackHitbox.enabled = false;
+
+        if (parryStackUI == null)
+            parryStackUI = FindFirstObjectByType<ParryStackUI>();
+
+        if (parryStackUI != null)
+        {
+            parryStackUI.playerController = this;
+            parryStackUI.UpdateUI();
+        }
     }
 
     void Update()
@@ -262,9 +274,7 @@ public class PlayerController : MonoBehaviour
     }
 
     [Header("Perfect Parry Stack")]
-    public int parryStack = 0;
-    public int requiredParryStacks = 3;
-    private bool awaitingReward = false;
+    public bool awaitingReward = false;
     private EnemyController lastEnemyHit;
 
     public void OnPerfectParry(EnemyController enemy)
@@ -272,13 +282,14 @@ public class PlayerController : MonoBehaviour
         if (enemy == null) return;
         if (awaitingReward) return;
 
-        parryStack++;
+        parryStackUI?.AddStack();
         lastEnemyHit = enemy;
+    }
 
-        if (parryStack >= requiredParryStacks)
-        {
-            StartCoroutine(WaitForEnemyDeathAndOpenReward());
-        }
+    public void StartRewardProcess()
+    {
+        if (awaitingReward) return;
+        StartCoroutine(WaitForEnemyDeathAndOpenReward());
     }
 
     private IEnumerator WaitForEnemyDeathAndOpenReward()
@@ -308,10 +319,9 @@ public class PlayerController : MonoBehaviour
                 CardFusionSystem.Instance?.RefreshHandUI();
                 Debug.Log($"Received new card: {chosen.cardName}");
 
-                parryStack = 0;
+                parryStackUI?.ResetStack();
 
                 awaitingReward = false;
-
                 CardSelectionActive = false;
             }
         });
