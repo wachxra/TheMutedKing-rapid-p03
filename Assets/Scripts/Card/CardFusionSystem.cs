@@ -27,12 +27,11 @@ public class CardFusionSystem : MonoBehaviour
     public int minSilenceDuration = 5;
     public int maxSilenceDuration = 15;
 
-
     private Card activeFusionCard = null;
     private bool isMovingFusionCard = false;
     private int currentSlotIndex = 0;
 
-    private List<GameObject> handUI = new List<GameObject>();
+    public List<GameObject> handUI = new List<GameObject>();
     private List<Card> selectedCards = new List<Card>();
     private int currentIndex = 0;
     private bool active = false;
@@ -330,7 +329,7 @@ public class CardFusionSystem : MonoBehaviour
         UpdateCardPositions();
     }
 
-    IEnumerator AnimateCardSpawn(GameObject card, Vector3 targetPos)
+    public IEnumerator AnimateCardSpawn(GameObject card, Vector3 targetPos)
     {
         if (card == null) yield break;
 

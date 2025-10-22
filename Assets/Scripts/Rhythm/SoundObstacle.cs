@@ -23,6 +23,7 @@ public class SoundObstacle : MonoBehaviour
         PlayerController player = other.GetComponent<PlayerController>();
         if (player != null)
         {
+            AudioManager.Instance?.PlaySFX("Attack");
             SoundMeterSystem.Instance?.AddSound(soundValue);
             Debug.Log($"Added {soundValue} sound from obstacle!");
         }
