@@ -7,9 +7,12 @@ public class SoundMeterSystem : MonoBehaviour
     public static SoundMeterSystem Instance;
 
     public Transform player;
-    public Slider playerHPSlider;
 
     [Header("Player HP (0-100)")]
+    public Image hpImage;
+    public TextMeshProUGUI hpText;
+    public Sprite[] hpLevelSprites = new Sprite[11];
+
     public int currentSoundPlayerHP = 0;
     public int maxSoundPlayerHP = 100;
     public float maxSoundDetector = 10f;
@@ -31,12 +34,10 @@ public class SoundMeterSystem : MonoBehaviour
     {
         Instance = this;
 
-        if (playerHPSlider != null)
-        {
-            playerHPSlider.minValue = 0f;
-            playerHPSlider.maxValue = maxSoundPlayerHP;
-            playerHPSlider.value = 0f;
-        }
+        if (hpImage != null)
+            hpImage.gameObject.SetActive(true);
+        if (hpText != null)
+            hpText.gameObject.SetActive(true);
 
         if (detectedSoundImage != null)
             detectedSoundImage.gameObject.SetActive(false);
@@ -95,8 +96,6 @@ public class SoundMeterSystem : MonoBehaviour
         {
             CalculateDetectedSound();
             UpdateDetectedUI();
-
-            CalculateSoundAroundPlayer();
         }
     }
 
@@ -115,18 +114,6 @@ public class SoundMeterSystem : MonoBehaviour
         }
 
         currentDetectedLevel = Mathf.Clamp(totalSound, 0, maxDetectedSoundLevel);
-    }
-
-    void CalculateSoundAroundPlayer()
-    {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(player.position, detectRadius);
-        float totalSound = 0f;
-        foreach (var hit in hits)
-        {
-            SoundObstacle obstacle = hit.GetComponent<SoundObstacle>();
-            if (obstacle != null)
-                totalSound += obstacle.soundValue;
-        }
     }
 
     public void AddSound(float amount)
@@ -158,13 +145,27 @@ public class SoundMeterSystem : MonoBehaviour
 
     void UpdateAccumulatedUI()
     {
-        if (playerHPSlider != null)
-            playerHPSlider.value = currentSoundPlayerHP;
+        int hpSpriteIndex = Mathf.FloorToInt((float)currentSoundPlayerHP / 10f);
+
+        hpSpriteIndex = Mathf.Clamp(hpSpriteIndex, 0, 10);
+
+        if (hpImage != null && hpLevelSprites != null && hpLevelSprites.Length > hpSpriteIndex)
+        {
+            hpImage.sprite = hpLevelSprites[hpSpriteIndex];
+        }
+
+        if (hpText != null)
+        {
+            hpText.text = $"{currentSoundPlayerHP}";
+        }
     }
 
     void TriggerGameOver()
     {
         isGameOver = true;
+
+        UpdateAccumulatedUI();
+
         if (PlayerController.Instance != null)
             PlayerController.Instance.enabled = false;
 
