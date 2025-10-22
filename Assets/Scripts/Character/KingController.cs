@@ -51,5 +51,10 @@ public class KingController : MonoBehaviour
     void Die()
     {
         Debug.Log("King has been defeated!");
+
+        if (GameResult.Instance != null)
+        {
+            GameResult.Instance.HandleWin();
+        }
     }
 }

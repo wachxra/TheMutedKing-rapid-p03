@@ -52,7 +52,11 @@ public class EnemyController : MonoBehaviour
         {
             float dirX = 0f;
 
-            if (Input.GetKey(KeyCode.A))
+            if (!PlayerController.Instance.canMove && Input.GetKey(KeyCode.A))
+            {
+                dirX = -1f;
+            }
+            else if (Input.GetKey(KeyCode.A))
             {
                 dirX = 1f;
             }

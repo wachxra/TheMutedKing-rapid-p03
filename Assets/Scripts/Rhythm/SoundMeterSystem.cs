@@ -114,6 +114,11 @@ public class SoundMeterSystem : MonoBehaviour
         isGameOver = true;
         if (PlayerController.Instance != null)
             PlayerController.Instance.enabled = false;
+
+        if (GameResult.Instance != null)
+        {
+            GameResult.Instance.HandleLose();
+        }
     }
 
     void OnDrawGizmosSelected()
