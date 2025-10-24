@@ -20,11 +20,6 @@ public class PlayerController : MonoBehaviour
     public float attackCooldown = 0.5f;
     private float timeUntilNextAttack = 0f;
 
-    [Header("Backtracking Control")]
-    public float backtrackTimeLimit = 2.0f;
-    private float backtrackTimer = 0f;
-    private bool isMovingForward = true;
-
     [Header("Other")]
     public bool isInCardMode = false;
     public bool isAttacking = false;
@@ -62,10 +57,13 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         HandleInput();
-        MoveWhenIdle();
-        UpdateBacktrackTimer();
         if (timeUntilNextAttack > 0f)
             timeUntilNextAttack -= Time.deltaTime;
+    }
+
+    void FixedUpdate()
+    {
+        Move();
     }
 
     void HandleInput()
@@ -83,13 +81,24 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.V))
             SoundMeterSystem.Instance?.ToggleMeter();
 
-        if (isInCardMode) return;
+        if (isInCardMode)
+        {
+            moveInput = 0f;
+            if (animator != null) animator.SetFloat("Speed", 0f);
+            return;
+        }
 
         if (canMove)
         {
-            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
-                Move();
+            moveInput = 0f;
+            if (Input.GetKey(KeyCode.A)) moveInput = -1f;
+            if (Input.GetKey(KeyCode.D)) moveInput = 1f;
         }
+        else
+        {
+            moveInput = 0f;
+        }
+
 
         if (Input.GetKeyDown(KeyCode.Space))
             AttackWithWeapon();
@@ -98,24 +107,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.DownArrow)) TryParryWith(Direction.Down);
         if (Input.GetKeyDown(KeyCode.LeftArrow)) TryParryWith(Direction.Left);
         if (Input.GetKeyDown(KeyCode.RightArrow)) TryParryWith(Direction.Right);
-    }
-
-    void Move()
-    {
-        float m = 0f;
-        if (Input.GetKey(KeyCode.A)) m = -1f;
-        if (Input.GetKey(KeyCode.D)) m = 1f;
-        moveInput = m;
-
-        if (moveInput > 0) isMovingForward = true;
-        else if (moveInput < 0) isMovingForward = false;
-
-        if (GroundController.Instance != null)
-        {
-            GroundController.Instance.SetMovement(moveInput * moveSpeed);
-        }
-
-        if (animator != null) animator.SetFloat("Speed", Mathf.Abs(moveInput));
 
         if (moveInput != 0f)
         {
@@ -123,51 +114,13 @@ public class PlayerController : MonoBehaviour
             localScale.x = Mathf.Abs(localScale.x) * (moveInput > 0 ? 1 : -1);
             transform.localScale = localScale;
         }
+
+        if (animator != null) animator.SetFloat("Speed", Mathf.Abs(moveInput));
     }
 
-    void MoveWhenIdle()
+    void Move()
     {
-        if (!canMove)
-        {
-            if (GroundController.Instance != null)
-            {
-                GroundController.Instance.SetMovement(0f);
-            }
-            if (animator != null) animator.SetFloat("Speed", 0f);
-            return;
-        }
-
-        bool isMovingInput = Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D);
-
-        if (!isMovingInput)
-        {
-            if (GroundController.Instance != null && GroundController.Instance.currentMoveSpeed != 0f)
-            {
-                GroundController.Instance.SetMovement(0f);
-            }
-
-            if (animator != null) animator.SetFloat("Speed", 0f);
-        }
-    }
-
-    void UpdateBacktrackTimer()
-    {
-        if (isInCardMode) return;
-
-        if (isMovingForward || Input.GetKey(KeyCode.D))
-        {
-            backtrackTimer = 0f;
-            canMove = true;
-        }
-        else if (Input.GetKey(KeyCode.A))
-        {
-            backtrackTimer += Time.deltaTime;
-
-            if (backtrackTimer >= backtrackTimeLimit)
-            {
-                GroundController.Instance?.SpawnWall();
-            }
-        }
+        rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -180,14 +133,6 @@ public class PlayerController : MonoBehaviour
             float pushForce = 5f;
 
             rb.AddForce(pushDirection * pushForce, ForceMode2D.Force);
-        }
-
-        if (GroundController.Instance != null && GroundController.Instance.currentWall != null &&
-            collision.gameObject == GroundController.Instance.currentWall)
-        {
-            canMove = false;
-            GroundController.Instance.SetMovement(0f);
-            if (animator != null) animator.SetFloat("Speed", 0f);
         }
     }
 

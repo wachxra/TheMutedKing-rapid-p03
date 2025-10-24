@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class EnemySpawner : MonoBehaviour
@@ -30,8 +30,6 @@ public class EnemySpawner : MonoBehaviour
         if (enemyPrefab == null || spawnPoint == null) return;
 
         currentEnemy = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
-
-        currentEnemy.transform.SetParent(GroundController.Instance.transform);
 
         currentEnemy.tag = "Enemy";
 

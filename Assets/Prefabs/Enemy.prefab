@@ -84,7 +84,7 @@ SpriteRenderer:
   m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 1f2a1fefd8e938b4a9c5a0fe7ca14c54, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -186,7 +186,9 @@ MonoBehaviour:
   minTravelTime: 0.2
   maxTravelTime: 2
   attackCooldown: 1
-  moveSpeed: 5
+  moveSpeed: 2.5
   detectRange: 2.5
+  stoppingDistance: 1.5
   spawnY: -1.15
   player: {fileID: 0}
+  spawner: {fileID: 0}
