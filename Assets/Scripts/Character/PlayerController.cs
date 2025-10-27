@@ -225,8 +225,7 @@ public class PlayerController : MonoBehaviour
     public void OnPerfectParry(EnemyController enemy)
     {
         if (enemy == null) return;
-        if (awaitingReward) return;
-
+        
         parryStackUI?.AddStack();
         lastEnemyHit = enemy;
     }
@@ -325,5 +324,37 @@ public class PlayerController : MonoBehaviour
         cardManager.hand.Add(chosen.Clone());
         CardFusionSystem.Instance?.RefreshHandUI();
         Debug.Log($"Received new card: {chosen.cardName}");
+    }
+
+    public IEnumerator OpenRewardOnEnemyDeath()
+    {
+        awaitingReward = true;
+
+        yield return new WaitForSeconds(0.2f);
+
+        randomChoices.Clear();
+        Card typeA = cardManager.GetRandomCardByType(CardType.TypeA);
+        Card typeB = cardManager.GetRandomCardByType(CardType.TypeB);
+        Card any = cardManager.GetRandomCard();
+
+        if (typeA != null) randomChoices.Add(typeA);
+        if (typeB != null) randomChoices.Add(typeB);
+        if (any != null) randomChoices.Add(any);
+
+        CardSelectionActive = true;
+        NewRewardCard.Instance.Show(randomChoices, (chosen) =>
+        {
+            if (chosen != null)
+            {
+                cardManager.hand.Add(chosen.Clone());
+                CardFusionSystem.Instance?.RefreshHandUI();
+                Debug.Log($"Received new card: {chosen.cardName}");
+
+                awaitingReward = false;
+                CardSelectionActive = false;
+            }
+        });
+
+        yield return new WaitUntil(() => !CardSelectionActive);
     }
 }

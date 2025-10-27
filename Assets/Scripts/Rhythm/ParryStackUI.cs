@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class ParryStackUI : MonoBehaviour
@@ -38,10 +38,7 @@ public class ParryStackUI : MonoBehaviour
 
         if (parryStack >= requiredParryStacks)
         {
-            if (playerController != null && !playerController.awaitingReward)
-            {
-                playerController.StartRewardProcess();
-            }
+            
         }
     }
 

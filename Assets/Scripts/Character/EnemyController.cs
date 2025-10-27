@@ -101,6 +101,11 @@ public class EnemyController : MonoBehaviour
                 RhythmSystem.Instance.EndCombo(false);
             }
 
+            if (PlayerController.Instance != null && !PlayerController.Instance.awaitingReward)
+            {
+                PlayerController.Instance.StartCoroutine(PlayerController.Instance.OpenRewardOnEnemyDeath());
+            }
+
             Destroy(gameObject);
         }
     }
