@@ -50,20 +50,7 @@ public class EnemyController : MonoBehaviour
 
         if (distance > detectRange)
         {
-            float dirX = 0f;
-
-            if (!PlayerController.Instance.canMove && Input.GetKey(KeyCode.A))
-            {
-                dirX = -1f;
-            }
-            else if (Input.GetKey(KeyCode.A))
-            {
-                dirX = 1f;
-            }
-            else
-            {
-                dirX = player.position.x > transform.position.x ? 1f : -1f;
-            }
+            float dirX = player.position.x > transform.position.x ? 1f : -1f;
 
             Vector2 newPos = rb.position + new Vector2(dirX * moveSpeed * Time.fixedDeltaTime, 0f);
             rb.MovePosition(newPos);
