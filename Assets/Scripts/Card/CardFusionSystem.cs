@@ -31,7 +31,7 @@ public class CardFusionSystem : MonoBehaviour
     private bool isMovingFusionCard = false;
     private int currentSlotIndex = 0;
 
-    public List<GameObject> handUI = new List<GameObject>();
+    public Dictionary<Card, GameObject> handCardUI = new Dictionary<Card, GameObject>();
     private List<Card> selectedCards = new List<Card>();
     private int currentIndex = 0;
     private bool active = false;
@@ -67,7 +67,11 @@ public class CardFusionSystem : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.RightArrow))
             currentSlotIndex = (currentSlotIndex + 1) % slots.Count;
 
-        GameObject fusedUI = handUI.Count > 0 ? handUI[0] : null;
+        GameObject fusedUI = null;
+        if (handCardUI.ContainsKey(activeFusionCard))
+        {
+            fusedUI = handCardUI[activeFusionCard];
+        }
 
         if (fusedUI != null && slots[currentSlotIndex].slotTransform != null)
             fusedUI.transform.position = slots[currentSlotIndex].slotTransform.position;
@@ -84,16 +88,20 @@ public class CardFusionSystem : MonoBehaviour
 
         CardSlot currentSlot = slots[currentSlotIndex];
 
+        GameObject fusedUI = null;
+        if (handCardUI.ContainsKey(activeFusionCard))
+        {
+            fusedUI = handCardUI[activeFusionCard];
+        }
+
         if (HandleCardPlacement(currentSlot, activeFusionCard))
         {
-            GameObject fusedUI = handUI.Find(go => go.name == activeFusionCard.cardName);
-
             if (fusedUI != null && currentSlot.slotTransform != null)
             {
                 fusedUI.transform.SetParent(currentSlot.slotTransform);
                 fusedUI.transform.localPosition = Vector3.zero;
 
-                handUI.Remove(fusedUI);
+                handCardUI.Remove(activeFusionCard);
 
                 if (currentSlot.slotType == CardSlotType.KingSlot)
                 {
@@ -105,13 +113,11 @@ public class CardFusionSystem : MonoBehaviour
         activeFusionCard = null;
         isMovingFusionCard = false;
 
-        RefreshHandUI();
+        RefreshHandUI();
     }
 
     private bool HandleCardPlacement(CardSlot slot, Card card)
     {
-        GameObject fusedUI = handUI.Count > 0 ? handUI[0] : null;
-
         if (slot.currentCard != null)
         {
             if (slot.slotTransform != null && slot.slotTransform.childCount > 0)
@@ -182,6 +188,9 @@ public class CardFusionSystem : MonoBehaviour
         if (slotsPanel != null) slotsPanel.SetActive(true);
 
         RefreshHandUI();
+
+        StopAllCoroutines();
+        StartCoroutine(AnimateCardSpreadFromCenter());
     }
 
     public void CloseCardMode()
@@ -255,6 +264,17 @@ public class CardFusionSystem : MonoBehaviour
         cardManager.hand.Remove(selectedCards[0]);
         cardManager.hand.Remove(selectedCards[1]);
 
+        if (handCardUI.ContainsKey(selectedCards[0]))
+        {
+            Destroy(handCardUI[selectedCards[0]]);
+            handCardUI.Remove(selectedCards[0]);
+        }
+        if (handCardUI.ContainsKey(selectedCards[1]))
+        {
+            Destroy(handCardUI[selectedCards[1]]);
+            handCardUI.Remove(selectedCards[1]);
+        }
+
         selectedCards.Clear();
         currentIndex = 0;
 
@@ -271,52 +291,51 @@ public class CardFusionSystem : MonoBehaviour
 
         StopAllCoroutines();
 
-        bool shouldClearUI = !isMovingFusionCard || !keepExistingHandUI;
-
-        if (shouldClearUI)
+        List<Card> cardsToRemove = new List<Card>();
+        foreach (var kvp in handCardUI)
         {
-            foreach (GameObject go in handUI)
+            if (!(isMovingFusionCard && kvp.Key == activeFusionCard) && !cardManager.hand.Contains(kvp.Key))
             {
-                if (go != null)
-                    Destroy(go);
+                if (kvp.Value != null)
+                    Destroy(kvp.Value);
+                cardsToRemove.Add(kvp.Key);
             }
-            handUI.Clear();
+        }
+        foreach (var card in cardsToRemove)
+        {
+            handCardUI.Remove(card);
         }
 
-        if (isMovingFusionCard && activeFusionCard != null)
+        if (isMovingFusionCard && activeFusionCard != null && !handCardUI.ContainsKey(activeFusionCard))
         {
-            bool exists = handUI.Exists(go => go != null && go.name == activeFusionCard.cardName);
-            if (!exists)
-            {
-                GameObject go = Instantiate(cardPrefab, handPanel.transform);
-                go.name = activeFusionCard.cardName;
+            GameObject go = Instantiate(cardPrefab, handPanel.transform);
+            go.name = activeFusionCard.cardName + "_Fused";
 
-                Image img = go.GetComponent<Image>();
-                if (img != null) img.sprite = activeFusionCard.cardSprite;
+            Image img = go.GetComponent<Image>();
+            if (img != null) img.sprite = activeFusionCard.cardSprite;
 
-                handUI.Add(go);
-            }
+            handCardUI.Add(activeFusionCard, go);
         }
 
         if (cardManager.hand.Count > 0)
         {
-            float totalWidth = (cardManager.hand.Count - 1) * cardSpacing;
+            int handCount = cardManager.hand.Count;
+            float totalWidth = (handCount - 1) * cardSpacing;
             float startX = -totalWidth / 2f;
 
-            for (int i = 0; i < cardManager.hand.Count; i++)
+            for (int i = 0; i < handCount; i++)
             {
                 Card c = cardManager.hand[i];
 
-                bool exists = handUI.Exists(go => go != null && go.name == c.cardName);
-                if (!exists)
+                if (!handCardUI.ContainsKey(c))
                 {
                     GameObject go = Instantiate(cardPrefab, handPanel.transform);
-                    go.name = c.cardName;
+                    go.name = c.cardName + "_" + i;
 
                     Image img = go.GetComponent<Image>();
                     if (img != null) img.sprite = c.cardSprite;
 
-                    handUI.Add(go);
+                    handCardUI.Add(c, go);
 
                     Vector3 targetPos = new Vector3(startX + i * cardSpacing, 0, 0);
                     StartCoroutine(AnimateCardSpawn(go, targetPos));
@@ -334,7 +353,7 @@ public class CardFusionSystem : MonoBehaviour
         if (card == null) yield break;
 
         float t = 0;
-        Vector3 startPos = card.transform.localPosition;
+        Vector3 startPos = card.transform.localPosition + Vector3.down * 500f;
 
         while (t < spawnAnimationTime)
         {
@@ -351,38 +370,85 @@ public class CardFusionSystem : MonoBehaviour
         UpdateCardPositions();
     }
 
+    private IEnumerator AnimateCardSpreadFromCenter()
+    {
+        if (cardManager == null || cardManager.hand.Count == 0) yield break;
+
+        List<Card> handCards = cardManager.hand;
+        float totalWidth = (handCards.Count - 1) * cardSpacing;
+        float startX = -totalWidth / 2f;
+        float duration = 0.4f;
+        float elapsed = 0f;
+
+        foreach (var kvp in handCardUI)
+        {
+            if (kvp.Value != null)
+                kvp.Value.transform.localPosition = Vector3.zero;
+        }
+
+        yield return null;
+
+        Dictionary<Card, Vector3> targetPositions = new Dictionary<Card, Vector3>();
+        for (int i = 0; i < handCards.Count; i++)
+        {
+            float x = startX + (i * cardSpacing);
+            Vector3 targetPos = new Vector3(x, 0f, 0f);
+            targetPositions[handCards[i]] = targetPos;
+        }
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = Mathf.SmoothStep(0, 1, elapsed / duration);
+
+            foreach (var card in handCards)
+            {
+                if (handCardUI.TryGetValue(card, out GameObject cardUI))
+                {
+                    Vector3 target = targetPositions[card];
+                    cardUI.transform.localPosition = Vector3.Lerp(Vector3.zero, target, t);
+                }
+            }
+
+            yield return null;
+        }
+
+        foreach (var card in handCards)
+        {
+            if (handCardUI.TryGetValue(card, out GameObject cardUI))
+                cardUI.transform.localPosition = targetPositions[card];
+        }
+    }
+
     void UpdateCardPositions()
     {
-        if (handUI.Count == 0) return;
-
-        int startIndex = isMovingFusionCard ? 1 : 0;
         int handCount = cardManager.hand.Count;
-
         if (handCount == 0 && !isMovingFusionCard) return;
+
+        List<Card> handCards = cardManager.hand;
 
         float totalWidth = (handCount - 1) * cardSpacing;
         float startX = -totalWidth / 2f;
 
-        for (int i = startIndex; i < handUI.Count; i++)
+        for (int i = 0; i < handCount; i++)
         {
-            int cardDataIndex = i - startIndex;
+            Card card = handCards[i];
+            if (!handCardUI.ContainsKey(card) || handCardUI[card] == null) continue;
 
-            if (handUI[i] == null || cardDataIndex >= handCount) continue;
-
-            Vector3 basePos = new Vector3(startX + cardDataIndex * cardSpacing, 0, 0);
-            Card card = cardManager.hand[cardDataIndex];
+            GameObject cardUI = handCardUI[card];
+            Vector3 basePos = new Vector3(startX + i * cardSpacing, 0, 0);
             float lift = 0f;
 
             if (card.isSelected) lift = selectedHeight;
-            else if (cardDataIndex == currentIndex) lift = hoverHeight;
+            else if (i == currentIndex) lift = hoverHeight;
 
-            handUI[i].transform.localPosition = basePos + Vector3.up * lift;
+            cardUI.transform.localPosition = basePos + Vector3.up * lift;
 
-            Outline outline = handUI[i].GetComponent<Outline>();
+            Outline outline = cardUI.GetComponent<Outline>();
             if (outline == null)
-                outline = handUI[i].AddComponent<Outline>();
+                outline = cardUI.AddComponent<Outline>();
 
-            if (cardDataIndex == currentIndex)
+            if (i == currentIndex)
             {
                 outline.effectColor = Color.yellow;
                 outline.effectDistance = new Vector2(5f, 5f);
@@ -391,6 +457,15 @@ public class CardFusionSystem : MonoBehaviour
             else
             {
                 outline.enabled = false;
+            }
+        }
+
+        if (isMovingFusionCard && activeFusionCard != null && handCardUI.ContainsKey(activeFusionCard))
+        {
+            GameObject fusedUI = handCardUI[activeFusionCard];
+            if (fusedUI != null && fusedUI.transform.parent != handPanel.transform)
+            {
+                fusedUI.transform.SetParent(handPanel.transform);
             }
         }
     }

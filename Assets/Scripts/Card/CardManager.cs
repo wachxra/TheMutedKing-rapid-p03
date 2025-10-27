@@ -53,14 +53,14 @@ public class CardManager : MonoBehaviour
 
         int remainingDraws = startingHandCount - hand.Count;
         List<Card> availableCards = new List<Card>(deck);
-        availableCards.RemoveAll(c => hand.Exists(h => h.cardName == c.cardName));
 
-        for (int i = 0; i < remainingDraws && availableCards.Count > 0; i++)
+        for (int i = 0; i < remainingDraws; i++)
         {
-            int index = Random.Range(0, availableCards.Count);
-            Card c = availableCards[index].Clone();
-            hand.Add(c);
-            availableCards.RemoveAt(index);
+            Card c = GetRandomCard();
+            if (c != null)
+                hand.Add(c);
+            else
+                break;
         }
 
         Debug.Log($"Starting hand: {hand.Count} cards");
@@ -107,7 +107,7 @@ public class CardManager : MonoBehaviour
 
         NewRewardCard.Instance.Show(rewardCards, (chosenCard) =>
         {
-            hand.Add(chosenCard);
+            hand.Add(chosenCard.Clone());
             Debug.Log($"Reward added: {chosenCard.cardName}");
             CardFusionSystem.Instance.RefreshHandUI(false);
         });
