@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
@@ -52,6 +53,9 @@ public class PlayerController : MonoBehaviour
             parryStackUI.playerController = this;
             parryStackUI.UpdateUI();
         }
+
+        if (stealthSlider != null)
+            stealthSlider.gameObject.SetActive(false);
     }
 
     void Update()
@@ -59,6 +63,11 @@ public class PlayerController : MonoBehaviour
         HandleInput();
         if (timeUntilNextAttack > 0f)
             timeUntilNextAttack -= Time.deltaTime;
+
+        if (isInStealth)
+        {
+            UpdateStealthTimer();
+        }
     }
 
     void FixedUpdate()
@@ -99,7 +108,6 @@ public class PlayerController : MonoBehaviour
             moveInput = 0f;
         }
 
-
         if (Input.GetKeyDown(KeyCode.Space))
             AttackWithWeapon();
 
@@ -107,6 +115,11 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.DownArrow)) TryParryWith(Direction.Down);
         if (Input.GetKeyDown(KeyCode.LeftArrow)) TryParryWith(Direction.Left);
         if (Input.GetKeyDown(KeyCode.RightArrow)) TryParryWith(Direction.Right);
+
+        if (Input.GetKeyDown(KeyCode.Q) && !isInStealth)
+        {
+            TryEnterStealthMode();
+        }
 
         if (moveInput != 0f)
         {
@@ -143,6 +156,11 @@ public class PlayerController : MonoBehaviour
 
         float attackDamage = defaultAttackDamage;
         float attackSound = defaultSilenceDamage;
+
+        if (isInStealth)
+        {
+            attackDamage = 9999f;
+        }
 
         if (CardFusionSystem.Instance != null)
         {
@@ -218,112 +236,87 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    [Header("Perfect Parry Stack")]
     public bool awaitingReward = false;
     private EnemyController lastEnemyHit;
+    private bool CardSelectionActive = false;
+    private List<Card> randomChoices = new List<Card>();
 
     public void OnPerfectParry(EnemyController enemy)
     {
         if (enemy == null) return;
-        
         parryStackUI?.AddStack();
         lastEnemyHit = enemy;
     }
 
-    public void StartRewardProcess()
+    [Header("Stealth Settings")]
+    public bool isInStealth = false;
+    public float stealthDuration = 5f;
+    private float stealthTimer = 0f;
+    public SpriteRenderer spriteRenderer;
+    public Slider stealthSlider;
+
+    void TryEnterStealthMode()
     {
-        if (awaitingReward) return;
-        StartCoroutine(WaitForEnemyDeathAndOpenReward());
+        if (parryStackUI == null) return;
+        if (parryStackUI.parryStack < parryStackUI.requiredParryStacks) return;
+
+        StartCoroutine(EnterStealthMode());
     }
 
-    private IEnumerator WaitForEnemyDeathAndOpenReward()
+    IEnumerator EnterStealthMode()
     {
-        awaitingReward = true;
+        isInStealth = true;
+        stealthTimer = stealthDuration;
 
-        if (lastEnemyHit != null)
+        if (stealthSlider != null)
         {
-            yield return new WaitUntil(() => lastEnemyHit == null || lastEnemyHit.Equals(null));
+            stealthSlider.maxValue = stealthDuration;
+            stealthSlider.value = stealthDuration;
+            stealthSlider.gameObject.SetActive(true);
         }
 
-        randomChoices.Clear();
-        Card typeA = cardManager.GetRandomCardByType(CardType.TypeA);
-        Card typeB = cardManager.GetRandomCardByType(CardType.TypeB);
-        Card any = cardManager.GetRandomCard();
-
-        if (typeA != null) randomChoices.Add(typeA);
-        if (typeB != null) randomChoices.Add(typeB);
-        if (any != null) randomChoices.Add(any);
-
-        CardSelectionActive = true;
-        NewRewardCard.Instance.Show(randomChoices, (chosen) =>
+        if (spriteRenderer != null)
         {
-            if (chosen != null)
-            {
-                cardManager.hand.Add(chosen.Clone());
-                CardFusionSystem.Instance?.RefreshHandUI();
-                Debug.Log($"Received new card: {chosen.cardName}");
+            Color c = spriteRenderer.color;
+            c.a = 0.4f;
+            spriteRenderer.color = c;
+        }
 
-                parryStackUI?.ResetStack();
+        Debug.Log("Entered Stealth Mode");
 
-                awaitingReward = false;
-                CardSelectionActive = false;
-            }
-        });
-
-        yield return new WaitUntil(() => !CardSelectionActive);
+        yield return null;
     }
 
-    private bool CardSelectionActive = false;
-    private List<Card> randomChoices = new List<Card>();
-    private int selectedIndex = 0;
-
-    private void OpenNewCardSelection()
+    void UpdateStealthTimer()
     {
-        if (cardManager == null) return;
+        stealthTimer -= Time.deltaTime;
 
-        randomChoices.Clear();
-        Card typeA = cardManager.GetRandomCardByType(CardType.TypeA);
-        Card typeB = cardManager.GetRandomCardByType(CardType.TypeB);
-        Card any = cardManager.GetRandomCard();
+        if (stealthSlider != null)
+            stealthSlider.value = stealthTimer;
 
-        if (typeA != null) randomChoices.Add(typeA);
-        if (typeB != null) randomChoices.Add(typeB);
-        if (any != null) randomChoices.Add(any);
-
-        selectedIndex = 0;
-        CardSelectionActive = true;
-        StartCoroutine(HandleCardSelection());
-    }
-
-    private IEnumerator HandleCardSelection()
-    {
-        CardFusionSystem.Instance?.handPanel.SetActive(true);
-        CardFusionSystem.Instance?.slotsPanel.SetActive(false);
-
-        CardFusionSystem.Instance?.cardManager.hand.AddRange(randomChoices);
-
-        CardFusionSystem.Instance?.RefreshHandUI();
-
-        while (CardSelectionActive)
+        if (stealthTimer <= 0f)
         {
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
-                selectedIndex = (selectedIndex - 1 + randomChoices.Count) % randomChoices.Count;
-            if (Input.GetKeyDown(KeyCode.RightArrow))
-                selectedIndex = (selectedIndex + 1) % randomChoices.Count;
-
-            CardFusionSystem.Instance?.MoveSelection(selectedIndex - CardFusionSystem.Instance.cardManager.hand.IndexOf(CardFusionSystem.Instance.cardManager.hand[selectedIndex]));
-
-            yield return null;
+            ExitStealthMode();
         }
     }
 
-    private void ChooseRewardCard(Card chosen)
+    void ExitStealthMode()
     {
-        if (cardManager == null || chosen == null) return;
+        isInStealth = false;
 
-        cardManager.hand.Add(chosen.Clone());
-        CardFusionSystem.Instance?.RefreshHandUI();
-        Debug.Log($"Received new card: {chosen.cardName}");
+        parryStackUI?.ResetStack();
+
+        if (stealthSlider != null)
+            stealthSlider.gameObject.SetActive(false);
+
+        if (spriteRenderer != null)
+        {
+            Color c = spriteRenderer.color;
+            c.a = 1f;
+            spriteRenderer.color = c;
+        }
+
+        Debug.Log("Exited Stealth Mode");
     }
 
     public IEnumerator OpenRewardOnEnemyDeath()
