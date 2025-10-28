@@ -255,6 +255,9 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(HandleAttackHitbox(attackDamage, attackSound));
         else
             SoundMeterSystem.Instance?.AddSound(Mathf.Max(0f, attackSound));
+
+        if (animator != null)
+            animator.SetTrigger("Attack");
     }
 
     private IEnumerator HandleAttackHitbox(float damage, float attackSound)
@@ -281,6 +284,11 @@ public class PlayerController : MonoBehaviour
     {
         if (isParrying) return;
         isParrying = true;
+
+        if (animator != null)
+        {
+            animator.SetTrigger("Parry");
+        }
 
         if (RhythmSystem.Instance != null) RhythmSystem.Instance.TryParry(dir);
 
