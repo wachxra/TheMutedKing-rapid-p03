@@ -24,6 +24,8 @@ public class EnemyController : MonoBehaviour
     private float timeUntilNextAttack;
     private Rigidbody2D rb;
 
+    private bool isColliding = false;
+
     void Awake()
     {
         currentHP = maxHP;
@@ -36,10 +38,30 @@ public class EnemyController : MonoBehaviour
             rb.gravityScale = 0f;
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
+    }
 
-        Vector3 pos = transform.position;
-        pos.y = spawnY;
-        transform.position = pos;
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Enemy"))
+        {
+            isColliding = true;
+        }
+    }
+
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Enemy"))
+        {
+            isColliding = true;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Enemy"))
+        {
+            isColliding = false;
+        }
     }
 
     void FixedUpdate()
@@ -49,31 +71,30 @@ public class EnemyController : MonoBehaviour
         if (PlayerController.Instance.isInStealth)
         {
             timeUntilNextAttack = attackCooldown;
-
             if (RhythmSystem.Instance != null)
             {
                 RhythmSystem.Instance.DestroyIconsOfEnemy(this);
                 RhythmSystem.Instance.EndCombo(false);
             }
-
             return;
         }
 
-        float distance = Mathf.Abs(player.position.x - transform.position.x);
+        float deltaX = Mathf.Abs(player.position.x - transform.position.x);
+        float deltaY = Mathf.Abs(player.position.y - transform.position.y);
 
-        if (distance > detectRange)
+        float detectRangeX = detectRange;
+        float detectRangeY = 2f;
+
+        if (deltaX > detectRangeX)
         {
             float dirX = player.position.x > transform.position.x ? 1f : -1f;
-
             Vector2 newPos = rb.position + new Vector2(dirX * moveSpeed * Time.fixedDeltaTime, 0f);
             rb.MovePosition(newPos);
         }
-        else
+        else if (deltaX <= detectRangeX && deltaY <= detectRangeY)
         {
             if (timeUntilNextAttack > 0)
-            {
                 timeUntilNextAttack -= Time.fixedDeltaTime;
-            }
             else
             {
                 StartRhythmAttack();

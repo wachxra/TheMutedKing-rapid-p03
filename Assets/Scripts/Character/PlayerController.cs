@@ -41,6 +41,9 @@ public class PlayerController : MonoBehaviour
     public bool healPlayerSoundOnPerfectCombo = false;
     public int perfectComboHealAmount = 5;
 
+    [Header("Dash Settings")]
+    public LayerMask dashStopLayer;
+
     void Awake()
     {
         if (Instance == null) Instance = this;
@@ -115,7 +118,14 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.LeftShift) && canMove && timeUntilNextDash <= 0f)
         {
-            TryDash();
+            if (RhythmSystem.Instance != null && RhythmSystem.Instance.activeIcons.Count > 0)
+            {
+                TryDash();
+            }
+            else
+            {
+                Debug.Log("Cannot dash outside Rhythm Mode!");
+            }
             return;
         }
 
@@ -161,26 +171,41 @@ public class PlayerController : MonoBehaviour
     void TryDash()
     {
         if (timeUntilNextDash > 0f) return;
-        timeUntilNextDash = dashCooldown;
-        AudioManager.Instance?.PlaySFX("Dash");
+
+        if (RhythmSystem.Instance == null || RhythmSystem.Instance.activeIcons.Count == 0)
+        {
+            Debug.Log("Cannot dash outside Rhythm Mode!");
+            return;
+        }
 
         float dashDirection = transform.localScale.x > 0 ? 1f : -1f;
-        transform.position += new Vector3(dashDirection * dashDistance, 0f, 0f);
+        Vector2 directionVector = new Vector2(dashDirection, 0f);
 
-        RhythmSystem.Instance?.CheckUltimateAfterDash(transform.position);
-    }
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, directionVector, dashDistance, dashStopLayer);
 
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        EnemyController enemy = collision.gameObject.GetComponent<EnemyController>();
+        Vector3 targetPosition;
+        float actualDashDistance;
 
-        if (enemy != null)
+        if (hit.collider != null && hit.collider.CompareTag("Gate"))
         {
-            Vector2 pushDirection = (transform.position - enemy.transform.position).normalized;
-            float pushForce = 5f;
+            actualDashDistance = hit.distance - (GetComponent<Collider2D>()?.bounds.extents.x ?? 0.5f) - 0.05f;
 
-            rb.AddForce(pushDirection * pushForce, ForceMode2D.Force);
+            if (actualDashDistance <= 0f)
+            {
+                return;
+            }
+
+            targetPosition = transform.position + new Vector3(dashDirection * actualDashDistance, 0f, 0f);
         }
+        else
+        {
+            targetPosition = transform.position + new Vector3(dashDirection * dashDistance, 0f, 0f);
+        }
+
+        timeUntilNextDash = dashCooldown;
+        AudioManager.Instance?.PlaySFX("Dash");
+        transform.position = targetPosition;
+        RhythmSystem.Instance?.CheckUltimateAfterDash(transform.position);
     }
 
     void AttackWithWeapon()

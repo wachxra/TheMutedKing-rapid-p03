@@ -123,7 +123,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -186,7 +186,7 @@ MonoBehaviour:
   minTravelTime: 0.2
   maxTravelTime: 2
   attackCooldown: 1
-  moveSpeed: 2.5
+  moveSpeed: 5
   detectRange: 2.5
-  spawnY: -1.7
+  spawnY: 0
   player: {fileID: 0}

@@ -40,7 +40,7 @@ public class RhythmSystem : MonoBehaviour
     public float attackCooldown = 3f;
 
     private List<BeatData> activeCombo;
-    private List<BeatIcon> activeIcons = new List<BeatIcon>();
+    public List<BeatIcon> activeIcons = new List<BeatIcon>();
     private float timeUntilNextAttack;
     private bool isSpawning = false;
 
