@@ -131,6 +131,9 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.C))
         {
+            if (CardFusionSystem.Instance != null && CardFusionSystem.Instance.isInRewardMode)
+                return;
+
             isInCardMode = !isInCardMode;
             if (isInCardMode)
                 CardFusionSystem.Instance?.OpenCardMode();
