@@ -459,6 +459,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Village Props - Road Lamp (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 3226521009676847256, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3226521009676847262, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
       propertyPath: m_LocalPosition.x
       value: -23.74
@@ -568,6 +572,10 @@ PrefabInstance:
     - target: {fileID: 2719227801452879220, guid: 0a84f54077193d3489d0de133048df37, type: 3}
       propertyPath: m_Name
       value: PF Village Props - Bush 01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2719227801452879220, guid: 0a84f54077193d3489d0de133048df37, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2719227801452879242, guid: 0a84f54077193d3489d0de133048df37, type: 3}
       propertyPath: m_SortingOrder
@@ -2424,6 +2432,10 @@ PrefabInstance:
     - target: {fileID: 2719227801452879220, guid: 0a84f54077193d3489d0de133048df37, type: 3}
       propertyPath: m_Name
       value: PF Village Props - Bush 01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2719227801452879220, guid: 0a84f54077193d3489d0de133048df37, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2719227801452879242, guid: 0a84f54077193d3489d0de133048df37, type: 3}
       propertyPath: m_SortingOrder
@@ -4376,6 +4388,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Village Props - Road Lamp
       objectReference: {fileID: 0}
+    - target: {fileID: 3226521009676847256, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3226521009676847262, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
       propertyPath: m_LocalPosition.x
       value: -18.85
@@ -4583,6 +4599,10 @@ PrefabInstance:
     - target: {fileID: 6930122694965717508, guid: cea950ff3b9b0804f967eaec919f19f7, type: 3}
       propertyPath: m_Name
       value: PF Village Props - Chest Golden (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6930122694965717508, guid: cea950ff3b9b0804f967eaec919f19f7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6930122694965717509, guid: cea950ff3b9b0804f967eaec919f19f7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7000,7 +7020,7 @@ Transform:
   - {fileID: 430305575}
   - {fileID: 830493772}
   - {fileID: 1045148516}
-  - {fileID: 780798887}
+  - {fileID: 3226521009315480376}
   - {fileID: 1477281198}
   - {fileID: 992382022}
   - {fileID: 632732905}
@@ -7742,6 +7762,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Village Props - Road Lamp (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3226521009676847256, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3226521009676847262, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
       propertyPath: m_LocalPosition.x
       value: -48.78
@@ -8078,6 +8102,10 @@ PrefabInstance:
     - target: {fileID: 2719227801452879220, guid: 0a84f54077193d3489d0de133048df37, type: 3}
       propertyPath: m_Name
       value: PF Village Props - Bush 01 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2719227801452879220, guid: 0a84f54077193d3489d0de133048df37, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2719227801452879242, guid: 0a84f54077193d3489d0de133048df37, type: 3}
       propertyPath: m_SortingOrder
@@ -10370,6 +10398,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Village Props - Bush 01 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 2719227801452879220, guid: 0a84f54077193d3489d0de133048df37, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2719227801452879242, guid: 0a84f54077193d3489d0de133048df37, type: 3}
       propertyPath: m_SortingOrder
       value: 8
@@ -11315,6 +11347,10 @@ PrefabInstance:
     - target: {fileID: 6930122694965717508, guid: cea950ff3b9b0804f967eaec919f19f7, type: 3}
       propertyPath: m_Name
       value: PF Village Props - Chest Golden (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6930122694965717508, guid: cea950ff3b9b0804f967eaec919f19f7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6930122694965717509, guid: cea950ff3b9b0804f967eaec919f19f7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12905,6 +12941,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Village Props - Bush 01 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2719227801452879220, guid: 0a84f54077193d3489d0de133048df37, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2719227801452879242, guid: 0a84f54077193d3489d0de133048df37, type: 3}
       propertyPath: m_SortingOrder
       value: 8
@@ -14470,7 +14510,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6930122694965717508, guid: cea950ff3b9b0804f967eaec919f19f7, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6930122694965717509, guid: cea950ff3b9b0804f967eaec919f19f7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16349,6 +16389,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Village Props - Road Lamp (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 3226521009676847256, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3226521009676847262, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 65.31
@@ -17167,6 +17211,10 @@ PrefabInstance:
     - target: {fileID: 3226521009676847256, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
       propertyPath: m_Name
       value: PF Village Props - Road Lamp (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3226521009676847256, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3226521009676847262, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18874,6 +18922,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Village Props - Bush 01 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2719227801452879220, guid: 0a84f54077193d3489d0de133048df37, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2719227801452879242, guid: 0a84f54077193d3489d0de133048df37, type: 3}
       propertyPath: m_SortingOrder
       value: 8
@@ -20181,148 +20233,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &780798886
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 267228430}
-    m_Modifications:
-    - target: {fileID: 3109333653335868874, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
-      propertyPath: m_Color.b
-      value: 0.105882354
-      objectReference: {fileID: 0}
-    - target: {fileID: 3109333653335868874, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
-      propertyPath: m_Color.g
-      value: 0.105882354
-      objectReference: {fileID: 0}
-    - target: {fileID: 3109333653335868874, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
-      propertyPath: m_Color.r
-      value: 0.105882354
-      objectReference: {fileID: 0}
-    - target: {fileID: 3109333653335868874, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
-      propertyPath: m_SortingOrder
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3226521009140389269, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
-      propertyPath: m_Color.b
-      value: 0.105882354
-      objectReference: {fileID: 0}
-    - target: {fileID: 3226521009140389269, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
-      propertyPath: m_Color.g
-      value: 0.105882354
-      objectReference: {fileID: 0}
-    - target: {fileID: 3226521009140389269, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
-      propertyPath: m_Color.r
-      value: 0.105882354
-      objectReference: {fileID: 0}
-    - target: {fileID: 3226521009140389269, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
-      propertyPath: m_SortingOrder
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3226521009676847256, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
-      propertyPath: m_Name
-      value: PF Village Props - Road Lamp (9)
-      objectReference: {fileID: 0}
-    - target: {fileID: 3226521009676847262, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.82
-      objectReference: {fileID: 0}
-    - target: {fileID: 3226521009676847262, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 49.143513
-      objectReference: {fileID: 0}
-    - target: {fileID: 3226521009676847262, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3226521009676847262, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3226521009676847262, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3226521009676847262, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3226521009676847262, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3226521009676847262, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3226521009676847262, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3226521009676847262, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4207770093189441692, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
-      propertyPath: m_Color.b
-      value: 0.105882354
-      objectReference: {fileID: 0}
-    - target: {fileID: 4207770093189441692, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
-      propertyPath: m_Color.g
-      value: 0.105882354
-      objectReference: {fileID: 0}
-    - target: {fileID: 4207770093189441692, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
-      propertyPath: m_Color.r
-      value: 0.105882354
-      objectReference: {fileID: 0}
-    - target: {fileID: 4207770093189441692, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
-      propertyPath: m_SortingOrder
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4858414591958445427, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
-      propertyPath: m_Color.b
-      value: 0.105882354
-      objectReference: {fileID: 0}
-    - target: {fileID: 4858414591958445427, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
-      propertyPath: m_Color.g
-      value: 0.105882354
-      objectReference: {fileID: 0}
-    - target: {fileID: 4858414591958445427, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
-      propertyPath: m_Color.r
-      value: 0.105882354
-      objectReference: {fileID: 0}
-    - target: {fileID: 4858414591958445427, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
-      propertyPath: m_SortingOrder
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 9141303890301823270, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
-      propertyPath: m_Color.b
-      value: 0.105882354
-      objectReference: {fileID: 0}
-    - target: {fileID: 9141303890301823270, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
-      propertyPath: m_Color.g
-      value: 0.105882354
-      objectReference: {fileID: 0}
-    - target: {fileID: 9141303890301823270, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
-      propertyPath: m_Color.r
-      value: 0.105882354
-      objectReference: {fileID: 0}
-    - target: {fileID: 9141303890301823270, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
-      propertyPath: m_SortingOrder
-      value: 8
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
---- !u!4 &780798887 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3226521009676847262, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
-  m_PrefabInstance: {fileID: 780798886}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &785802407
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21154,6 +21064,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Village Props - Bush 01 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 2719227801452879220, guid: 0a84f54077193d3489d0de133048df37, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2719227801452879242, guid: 0a84f54077193d3489d0de133048df37, type: 3}
       propertyPath: m_SortingOrder
       value: 8
@@ -21325,6 +21239,10 @@ PrefabInstance:
     - target: {fileID: 6930122694965717508, guid: cea950ff3b9b0804f967eaec919f19f7, type: 3}
       propertyPath: m_Name
       value: PF Village Props - Chest Golden (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6930122694965717508, guid: cea950ff3b9b0804f967eaec919f19f7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6930122694965717509, guid: cea950ff3b9b0804f967eaec919f19f7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -21505,7 +21423,91 @@ MonoBehaviour:
     - {fileID: 279513397}
     - {fileID: 437752074}
     - {fileID: 2116446035}
+    minSpawnCount: 4
+    maxSpawnCount: 6
+    currentSpawnedItems: []
+  - groupName: Chest_01
+    itemPrefab: {fileID: 1541867841660603423, guid: 43bc20e6a3545f240abb94903372660b, type: 3}
+    spawnPoints:
+    - {fileID: 1990383535}
+    - {fileID: 430305575}
+    - {fileID: 830493772}
+    - {fileID: 1045148516}
+    minSpawnCount: 1
+    maxSpawnCount: 2
+    currentSpawnedItems: []
+  - groupName: Lamp_01
+    itemPrefab: {fileID: 3175176561146192983, guid: 6efd29f755e2657478deb2bfaa5908d5, type: 3}
+    spawnPoints:
+    - {fileID: 3226521009315480376}
+    - {fileID: 1477281198}
+    - {fileID: 992382022}
+    - {fileID: 632732905}
     minSpawnCount: 2
+    maxSpawnCount: 4
+    currentSpawnedItems: []
+  - groupName: Obstacle_02
+    itemPrefab: {fileID: 4116061807421460063, guid: ede3fd4f84c6fd44d8c6240f4cd38ff2, type: 3}
+    spawnPoints:
+    - {fileID: 99394566}
+    - {fileID: 297287295}
+    - {fileID: 828400567}
+    - {fileID: 1643879566}
+    - {fileID: 13127640}
+    - {fileID: 728495566}
+    minSpawnCount: 3
+    maxSpawnCount: 5
+    currentSpawnedItems: []
+  - groupName: Chest_02
+    itemPrefab: {fileID: 1541867841660603423, guid: 43bc20e6a3545f240abb94903372660b, type: 3}
+    spawnPoints:
+    - {fileID: 541422904}
+    - {fileID: 2003459484}
+    minSpawnCount: 1
+    maxSpawnCount: 2
+    currentSpawnedItems: []
+  - groupName: Lamp_02
+    itemPrefab: {fileID: 3175176561146192983, guid: 6efd29f755e2657478deb2bfaa5908d5, type: 3}
+    spawnPoints:
+    - {fileID: 154407688}
+    - {fileID: 289398261}
+    - {fileID: 1138761991}
+    - {fileID: 1038580341}
+    - {fileID: 2043376490}
+    minSpawnCount: 2
+    maxSpawnCount: 4
+    currentSpawnedItems: []
+  - groupName: Obstacle_03
+    itemPrefab: {fileID: 4116061807421460063, guid: ede3fd4f84c6fd44d8c6240f4cd38ff2, type: 3}
+    spawnPoints:
+    - {fileID: 1136704742}
+    - {fileID: 1716655215}
+    - {fileID: 394168027}
+    - {fileID: 1738486306}
+    - {fileID: 486593898}
+    - {fileID: 1610430272}
+    minSpawnCount: 3
+    maxSpawnCount: 4
+    currentSpawnedItems: []
+  - groupName: Chest_03
+    itemPrefab: {fileID: 4116061807421460063, guid: ede3fd4f84c6fd44d8c6240f4cd38ff2, type: 3}
+    spawnPoints:
+    - {fileID: 1259209899}
+    - {fileID: 160676157}
+    - {fileID: 957073242}
+    - {fileID: 1643579135}
+    minSpawnCount: 1
+    maxSpawnCount: 2
+    currentSpawnedItems: []
+  - groupName: Lamp_03
+    itemPrefab: {fileID: 3175176561146192983, guid: 6efd29f755e2657478deb2bfaa5908d5, type: 3}
+    spawnPoints:
+    - {fileID: 7102058}
+    - {fileID: 937490710}
+    - {fileID: 670038369}
+    - {fileID: 1047261737}
+    - {fileID: 1299143307}
+    minSpawnCount: 3
     maxSpawnCount: 4
     currentSpawnedItems: []
 --- !u!4 &845735440
@@ -23738,6 +23740,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Village Props - Road Lamp (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 3226521009676847256, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3226521009676847262, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
       propertyPath: m_LocalPosition.x
       value: -49.15
@@ -24773,6 +24779,10 @@ PrefabInstance:
     - target: {fileID: 6930122694965717508, guid: cea950ff3b9b0804f967eaec919f19f7, type: 3}
       propertyPath: m_Name
       value: PF Village Props - Chest Golden (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6930122694965717508, guid: cea950ff3b9b0804f967eaec919f19f7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6930122694965717509, guid: cea950ff3b9b0804f967eaec919f19f7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -25860,6 +25870,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Village Props - Road Lamp (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 3226521009676847256, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3226521009676847262, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 49.26
@@ -26836,6 +26850,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Village Props - Road Lamp (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3226521009676847256, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3226521009676847262, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 47.53
@@ -27070,6 +27088,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2026728062}
+  - {fileID: 1198905277}
   - {fileID: 1569387374}
   - {fileID: 364807591}
   m_Father: {fileID: 0}
@@ -27266,6 +27285,10 @@ PrefabInstance:
     - target: {fileID: 6930122694965717508, guid: cea950ff3b9b0804f967eaec919f19f7, type: 3}
       propertyPath: m_Name
       value: PF Village Props - Chest Golden (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6930122694965717508, guid: cea950ff3b9b0804f967eaec919f19f7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6930122694965717509, guid: cea950ff3b9b0804f967eaec919f19f7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -27646,6 +27669,10 @@ PrefabInstance:
     - target: {fileID: 3226521009676847256, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
       propertyPath: m_Name
       value: PF Village Props - Road Lamp (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3226521009676847256, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3226521009676847262, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -29559,6 +29586,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Village Props - Bush 01
       objectReference: {fileID: 0}
+    - target: {fileID: 2719227801452879220, guid: 0a84f54077193d3489d0de133048df37, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2719227801452879242, guid: 0a84f54077193d3489d0de133048df37, type: 3}
       propertyPath: m_SortingOrder
       value: 8
@@ -29672,6 +29703,10 @@ PrefabInstance:
     - target: {fileID: 3226521009676847256, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
       propertyPath: m_Name
       value: PF Village Props - Road Lamp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3226521009676847256, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3226521009676847262, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -31437,6 +31472,77 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 662194080356567718, guid: 366bd147d3b568843ab9463d10b7fb98, type: 3}
   m_PrefabInstance: {fileID: 1198528424}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1198905276 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9158444668073305405, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+  m_PrefabInstance: {fileID: 1328424124}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1198905277 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7088601270183982734, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+  m_PrefabInstance: {fileID: 1328424124}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1198905278
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198905276}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3c2a5b7097b0fe44394328c0bdb9252e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1198905279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198905276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11ca052b5f53c104e8460773d812a318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ParryStackUI
+  stackImage: {fileID: 143446210}
+  stackSprites:
+  - {fileID: 5088316998373936774, guid: 73d14ced0e21c9b4b96d7240adedfd43, type: 3}
+  - {fileID: -855298285791758126, guid: b19a323ba9ec9ae48893e3c917779c01, type: 3}
+  - {fileID: 6937817954938267909, guid: 307319790ff0c4440892659693465d9d, type: 3}
+  - {fileID: -6470460504253458178, guid: 14a37b968fafb8247ae56d085783c0a8, type: 3}
+  - {fileID: -4178046375966092550, guid: 59a870d6660dd8a4a876b067d0965d09, type: 3}
+  parryStack: 0
+  requiredParryStacks: 12
+  parriesPerSprite: 3
+  playerController: {fileID: 1198905281}
+--- !u!114 &1198905281 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 815212601682451392, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+  m_PrefabInstance: {fileID: 1328424124}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198905276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff628622519f1264685a7bf0596b2676, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+--- !u!212 &1198905284 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7077731145357990413, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+  m_PrefabInstance: {fileID: 1328424124}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1208372911
 PrefabInstance:
@@ -45913,6 +46019,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Village Props - Chest Golden
       objectReference: {fileID: 0}
+    - target: {fileID: 6930122694965717508, guid: cea950ff3b9b0804f967eaec919f19f7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6930122694965717509, guid: cea950ff3b9b0804f967eaec919f19f7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13.28
@@ -46445,6 +46555,10 @@ PrefabInstance:
     - target: {fileID: 3226521009676847256, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
       propertyPath: m_Name
       value: PF Village Props - Road Lamp (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3226521009676847256, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3226521009676847262, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -47267,6 +47381,305 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4371201966070470695, guid: 8cc938fe21b426a4daedf2f6c7e34c80, type: 3}
   m_PrefabInstance: {fileID: 1317345462}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1328424124
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1041383051}
+    m_Modifications:
+    - target: {fileID: 815212601682451392, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1198905278}
+    - target: {fileID: 815212601682451392, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: moveSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 815212601682451392, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: cardManager
+      value: 
+      objectReference: {fileID: 1797229345}
+    - target: {fileID: 815212601682451392, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: ghostSlider
+      value: 
+      objectReference: {fileID: 2110622873}
+    - target: {fileID: 815212601682451392, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: dashDistance
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 815212601682451392, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: parryStackUI
+      value: 
+      objectReference: {fileID: 1198905279}
+    - target: {fileID: 815212601682451392, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: rhythmSystem
+      value: 
+      objectReference: {fileID: 2055639090}
+    - target: {fileID: 815212601682451392, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: soundMeterUI
+      value: 
+      objectReference: {fileID: 590409146}
+    - target: {fileID: 815212601682451392, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: stealthSlider
+      value: 
+      objectReference: {fileID: 2110622873}
+    - target: {fileID: 815212601682451392, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: attackCooldown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 815212601682451392, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 1198905284}
+    - target: {fileID: 815212601682451392, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: parriesPerSprite
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 815212601682451392, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: ghostSliderObject
+      value: 
+      objectReference: {fileID: 1733432990}
+    - target: {fileID: 815212601682451392, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: requiredParryStacks
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 815212601682451392, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: defaultSilenceDamage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099827394276325184, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: hpText
+      value: 
+      objectReference: {fileID: 362329662}
+    - target: {fileID: 1099827394276325184, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: hpImage
+      value: 
+      objectReference: {fileID: 535358932}
+    - target: {fileID: 1099827394276325184, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: playerHPSlider
+      value: 
+      objectReference: {fileID: 1760101020}
+    - target: {fileID: 1099827394276325184, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: currentSoundText
+      value: 
+      objectReference: {fileID: 1248372786}
+    - target: {fileID: 1099827394276325184, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: currentSoundImage
+      value: 
+      objectReference: {fileID: 263160905}
+    - target: {fileID: 1099827394276325184, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: detectedSoundText
+      value: 
+      objectReference: {fileID: 1248372786}
+    - target: {fileID: 1099827394276325184, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: detectedSoundImage
+      value: 
+      objectReference: {fileID: 263160905}
+    - target: {fileID: 1099827394276325184, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: soundDetectorSlider
+      value: 
+      objectReference: {fileID: 590409148}
+    - target: {fileID: 1099827394276325184, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: 'hpLevelSprites.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8995154407686431259, guid: bc2329a4d0500aa4ba2c5c152696ce67, type: 3}
+    - target: {fileID: 1099827394276325184, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: 'hpLevelSprites.Array.data[1]'
+      value: 
+      objectReference: {fileID: -855298285791758126, guid: e6033f77a50baff4583dc3522c8eec68, type: 3}
+    - target: {fileID: 1099827394276325184, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: 'hpLevelSprites.Array.data[2]'
+      value: 
+      objectReference: {fileID: 6937817954938267909, guid: 9b926ce461792f34383b77f8e0d56e1d, type: 3}
+    - target: {fileID: 1099827394276325184, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: 'hpLevelSprites.Array.data[3]'
+      value: 
+      objectReference: {fileID: -6470460504253458178, guid: 47b771b7288659443b5f763eb10d7c3d, type: 3}
+    - target: {fileID: 1099827394276325184, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: 'hpLevelSprites.Array.data[4]'
+      value: 
+      objectReference: {fileID: -4178046375966092550, guid: 50a5502ef55a72549a9df28addbe6072, type: 3}
+    - target: {fileID: 1099827394276325184, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: 'hpLevelSprites.Array.data[5]'
+      value: 
+      objectReference: {fileID: 4130640169021434097, guid: b83c8ce69d1e7af44a71e3c524a4e329, type: 3}
+    - target: {fileID: 1099827394276325184, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: 'hpLevelSprites.Array.data[6]'
+      value: 
+      objectReference: {fileID: 3465286685962602723, guid: 62c2c7a43eaea134999ef4d42aea57af, type: 3}
+    - target: {fileID: 1099827394276325184, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: 'hpLevelSprites.Array.data[7]'
+      value: 
+      objectReference: {fileID: 7028616704906629411, guid: 032c380b774787e4b97e58a998a35ef3, type: 3}
+    - target: {fileID: 1099827394276325184, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: 'hpLevelSprites.Array.data[8]'
+      value: 
+      objectReference: {fileID: 8288426215254106694, guid: df564f9b58083624aa1ceed092adb3d6, type: 3}
+    - target: {fileID: 1099827394276325184, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: 'hpLevelSprites.Array.data[9]'
+      value: 
+      objectReference: {fileID: 4113829005332862926, guid: 968184739e3f7194fbb85d56b123da01, type: 3}
+    - target: {fileID: 1099827394276325184, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: 'hpLevelSprites.Array.data[10]'
+      value: 
+      objectReference: {fileID: -5099292496197868168, guid: 3692c0d1f9064414dba6196eb881f78e, type: 3}
+    - target: {fileID: 1099827394276325184, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: 'soundLevelSprites.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8995154407686431259, guid: bc2329a4d0500aa4ba2c5c152696ce67, type: 3}
+    - target: {fileID: 1099827394276325184, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: 'soundLevelSprites.Array.data[1]'
+      value: 
+      objectReference: {fileID: -855298285791758126, guid: e6033f77a50baff4583dc3522c8eec68, type: 3}
+    - target: {fileID: 1099827394276325184, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: 'soundLevelSprites.Array.data[2]'
+      value: 
+      objectReference: {fileID: 6937817954938267909, guid: 9b926ce461792f34383b77f8e0d56e1d, type: 3}
+    - target: {fileID: 1099827394276325184, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: 'soundLevelSprites.Array.data[3]'
+      value: 
+      objectReference: {fileID: -6470460504253458178, guid: 47b771b7288659443b5f763eb10d7c3d, type: 3}
+    - target: {fileID: 1099827394276325184, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: 'soundLevelSprites.Array.data[4]'
+      value: 
+      objectReference: {fileID: -4178046375966092550, guid: 50a5502ef55a72549a9df28addbe6072, type: 3}
+    - target: {fileID: 1099827394276325184, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: 'soundLevelSprites.Array.data[5]'
+      value: 
+      objectReference: {fileID: 4130640169021434097, guid: b83c8ce69d1e7af44a71e3c524a4e329, type: 3}
+    - target: {fileID: 1099827394276325184, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: 'soundLevelSprites.Array.data[6]'
+      value: 
+      objectReference: {fileID: 3465286685962602723, guid: 62c2c7a43eaea134999ef4d42aea57af, type: 3}
+    - target: {fileID: 1099827394276325184, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: 'soundLevelSprites.Array.data[7]'
+      value: 
+      objectReference: {fileID: 7028616704906629411, guid: 032c380b774787e4b97e58a998a35ef3, type: 3}
+    - target: {fileID: 1099827394276325184, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: 'soundLevelSprites.Array.data[8]'
+      value: 
+      objectReference: {fileID: 8288426215254106694, guid: df564f9b58083624aa1ceed092adb3d6, type: 3}
+    - target: {fileID: 1099827394276325184, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: 'soundLevelSprites.Array.data[9]'
+      value: 
+      objectReference: {fileID: 4113829005332862926, guid: 968184739e3f7194fbb85d56b123da01, type: 3}
+    - target: {fileID: 1099827394276325184, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: 'soundLevelSprites.Array.data[10]'
+      value: 
+      objectReference: {fileID: -5099292496197868168, guid: 3692c0d1f9064414dba6196eb881f78e, type: 3}
+    - target: {fileID: 3648425038113622369, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: m_Size.x
+      value: 2.7086363
+      objectReference: {fileID: 0}
+    - target: {fileID: 3648425038113622369, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.025546491
+      objectReference: {fileID: 0}
+    - target: {fileID: 3648425038113622369, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.018835545
+      objectReference: {fileID: 0}
+    - target: {fileID: 3648425038113622369, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3648425038113622369, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 3.125
+      objectReference: {fileID: 0}
+    - target: {fileID: 3648425038113622369, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.71875
+      objectReference: {fileID: 0}
+    - target: {fileID: 6467924572060831334, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: m_Constraints
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7077731145357990413, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7077731145357990413, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ae297123f091bbf4e8f1835eb98fb293, type: 3}
+    - target: {fileID: 7077731145357990413, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: m_SortingOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7088601270183982734, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5646592
+      objectReference: {fileID: 0}
+    - target: {fileID: 7088601270183982734, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5646592
+      objectReference: {fileID: 0}
+    - target: {fileID: 7088601270183982734, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5646592
+      objectReference: {fileID: 0}
+    - target: {fileID: 7088601270183982734, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.0837502
+      objectReference: {fileID: 0}
+    - target: {fileID: 7088601270183982734, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 25.728392
+      objectReference: {fileID: 0}
+    - target: {fileID: 7088601270183982734, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7088601270183982734, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7088601270183982734, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7088601270183982734, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7088601270183982734, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7088601270183982734, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7088601270183982734, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7088601270183982734, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9158444668073305405, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 9158444668073305405, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9158444668073305405, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1198905279}
+    - targetCorrespondingSourceObject: {fileID: 9158444668073305405, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1198905278}
+  m_SourcePrefab: {fileID: 100100000, guid: d24e595739d088c46b9ad8991df42182, type: 3}
 --- !u!1001 &1335703095
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50378,6 +50791,10 @@ PrefabInstance:
     - target: {fileID: 3226521009676847256, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
       propertyPath: m_Name
       value: PF Village Props - Road Lamp (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3226521009676847256, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3226521009676847262, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -53580,6 +53997,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Village Props - Bush 01 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2719227801452879220, guid: 0a84f54077193d3489d0de133048df37, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2719227801452879242, guid: 0a84f54077193d3489d0de133048df37, type: 3}
       propertyPath: m_SortingOrder
       value: 8
@@ -54272,6 +54693,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Village Props - Chest Golden (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6930122694965717508, guid: cea950ff3b9b0804f967eaec919f19f7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6930122694965717509, guid: cea950ff3b9b0804f967eaec919f19f7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -39.98
@@ -54333,6 +54758,10 @@ PrefabInstance:
     - target: {fileID: 2719227801452879220, guid: 0a84f54077193d3489d0de133048df37, type: 3}
       propertyPath: m_Name
       value: PF Village Props - Bush 01 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2719227801452879220, guid: 0a84f54077193d3489d0de133048df37, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2719227801452879242, guid: 0a84f54077193d3489d0de133048df37, type: 3}
       propertyPath: m_SortingOrder
@@ -54525,9 +54954,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c86d263a3b3c93428acc6da790086f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TeleportPoint
-  destinationLevelID: 1
+  destinationLevelID: 2
   destinationPoints:
-  - {fileID: 2026728062}
+  - {fileID: 1198905277}
   - {fileID: 364807591}
   interactUI: {fileID: 1154300701}
 --- !u!61 &1648765023
@@ -69972,9 +70401,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c86d263a3b3c93428acc6da790086f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TeleportPoint
-  destinationLevelID: 1
+  destinationLevelID: 3
   destinationPoints:
-  - {fileID: 2026728062}
+  - {fileID: 1198905277}
   - {fileID: 1569387374}
   interactUI: {fileID: 1349254286}
 --- !u!61 &1697500549
@@ -70556,6 +70985,10 @@ PrefabInstance:
     - target: {fileID: 2719227801452879220, guid: 0a84f54077193d3489d0de133048df37, type: 3}
       propertyPath: m_Name
       value: PF Village Props - Bush 01 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2719227801452879220, guid: 0a84f54077193d3489d0de133048df37, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2719227801452879242, guid: 0a84f54077193d3489d0de133048df37, type: 3}
       propertyPath: m_SortingOrder
@@ -71173,6 +71606,10 @@ PrefabInstance:
     - target: {fileID: 2719227801452879220, guid: 0a84f54077193d3489d0de133048df37, type: 3}
       propertyPath: m_Name
       value: PF Village Props - Bush 01 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2719227801452879220, guid: 0a84f54077193d3489d0de133048df37, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2719227801452879242, guid: 0a84f54077193d3489d0de133048df37, type: 3}
       propertyPath: m_SortingOrder
@@ -73997,9 +74434,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c86d263a3b3c93428acc6da790086f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TeleportPoint
-  destinationLevelID: 1
+  destinationLevelID: 2
   destinationPoints:
-  - {fileID: 2026728062}
+  - {fileID: 1198905277}
   - {fileID: 364807591}
   interactUI: {fileID: 2136003634}
 --- !u!61 &1839880840
@@ -78536,6 +78973,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF Village Props - Chest Golden
       objectReference: {fileID: 0}
+    - target: {fileID: 6930122694965717508, guid: cea950ff3b9b0804f967eaec919f19f7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6930122694965717509, guid: cea950ff3b9b0804f967eaec919f19f7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -25.466642
@@ -78883,6 +79324,10 @@ PrefabInstance:
     - target: {fileID: 6930122694965717508, guid: cea950ff3b9b0804f967eaec919f19f7, type: 3}
       propertyPath: m_Name
       value: PF Village Props - Chest Golden (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6930122694965717508, guid: cea950ff3b9b0804f967eaec919f19f7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6930122694965717509, guid: cea950ff3b9b0804f967eaec919f19f7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -79487,6 +79932,10 @@ PrefabInstance:
     - target: {fileID: 3226521009676847256, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
       propertyPath: m_Name
       value: PF Village Props - Road Lamp (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3226521009676847256, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3226521009676847262, guid: c13263f1f05170f4e849875cee5c46d0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -80460,9 +80909,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c86d263a3b3c93428acc6da790086f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TeleportPoint
-  destinationLevelID: 1
+  destinationLevelID: 3
   destinationPoints:
-  - {fileID: 2026728062}
+  - {fileID: 1198905277}
   - {fileID: 1569387374}
   interactUI: {fileID: 941967796}
 --- !u!61 &2073709218
@@ -95783,6 +96232,72 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!4 &3226521009315480376 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8633103234953846700, guid: 6efd29f755e2657478deb2bfaa5908d5, type: 3}
+  m_PrefabInstance: {fileID: 3392692294780304997}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3392692294780304997
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 267228430}
+    m_Modifications:
+    - target: {fileID: 3175176561146192983, guid: 6efd29f755e2657478deb2bfaa5908d5, type: 3}
+      propertyPath: m_Name
+      value: PF Village Props - Road Lamp (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175176561146192983, guid: 6efd29f755e2657478deb2bfaa5908d5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8633103234953846700, guid: 6efd29f755e2657478deb2bfaa5908d5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 8633103234953846700, guid: 6efd29f755e2657478deb2bfaa5908d5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 49.143513
+      objectReference: {fileID: 0}
+    - target: {fileID: 8633103234953846700, guid: 6efd29f755e2657478deb2bfaa5908d5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8633103234953846700, guid: 6efd29f755e2657478deb2bfaa5908d5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8633103234953846700, guid: 6efd29f755e2657478deb2bfaa5908d5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8633103234953846700, guid: 6efd29f755e2657478deb2bfaa5908d5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8633103234953846700, guid: 6efd29f755e2657478deb2bfaa5908d5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8633103234953846700, guid: 6efd29f755e2657478deb2bfaa5908d5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8633103234953846700, guid: 6efd29f755e2657478deb2bfaa5908d5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8633103234953846700, guid: 6efd29f755e2657478deb2bfaa5908d5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6efd29f755e2657478deb2bfaa5908d5, type: 3}
 --- !u!1001 &4618929568976701438
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -96065,7 +96580,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9158444668073305405, guid: d24e595739d088c46b9ad8991df42182, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: Player_F
       objectReference: {fileID: 0}
     - target: {fileID: 9158444668073305405, guid: d24e595739d088c46b9ad8991df42182, type: 3}
       propertyPath: m_IsActive
