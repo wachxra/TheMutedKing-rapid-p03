@@ -3,11 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
-/*public interface IInteractable
-{
-    void OnInteract(PlayerController player);
-}*/
-
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
@@ -45,43 +40,6 @@ public class PlayerController : MonoBehaviour
     public bool healPlayerHPOnPerfectCombo = true;
     public bool healPlayerSoundOnPerfectCombo = false;
     public int perfectComboHealAmount = 5;
-
-    /*[Header("Inventory")]
-    public List<string> collectedKeys = new List<string>();
-
-    [Header("Interactables Nearby")]
-    private readonly List<IInteractable> interactablesNearby = new List<IInteractable>();
-
-    public void AddKey(string keyID)
-    {
-        if (!collectedKeys.Contains(keyID))
-            collectedKeys.Add(keyID);
-    }
-
-    public bool HasKey(string keyID)
-    {
-        return collectedKeys.Contains(keyID);
-    }
-
-    public void UseKey(string keyID)
-    {
-        if (HasKey(keyID))
-            collectedKeys.Remove(keyID);
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        var interactable = other.GetComponent<IInteractable>();
-        if (interactable != null && !interactablesNearby.Contains(interactable))
-            interactablesNearby.Add(interactable);
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        var interactable = other.GetComponent<IInteractable>();
-        if (interactable != null && interactablesNearby.Contains(interactable))
-            interactablesNearby.Remove(interactable);
-    }*/
 
     void Awake()
     {
