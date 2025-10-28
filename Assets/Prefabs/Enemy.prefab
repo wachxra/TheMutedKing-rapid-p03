@@ -188,5 +188,5 @@ MonoBehaviour:
   attackCooldown: 1
   moveSpeed: 2.5
   detectRange: 2.5
-  spawnY: -1.15
+  spawnY: -1.7
   player: {fileID: 0}
