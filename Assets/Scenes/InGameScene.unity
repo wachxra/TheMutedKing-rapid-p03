@@ -1897,6 +1897,8 @@ MonoBehaviour:
   target: {fileID: 2026728062}
   smoothSpeed: 0.125
   offset: {x: 0, y: 1.2, z: -10}
+  kingObject: {fileID: 160742891}
+  kingOffset: {x: 0, y: 1, z: 0}
 --- !u!1 &520093408
 GameObject:
   m_ObjectHideFlags: 0
@@ -5446,6 +5448,7 @@ MonoBehaviour:
   maxWeaponUses: 10
   minSilenceDuration: 5
   maxSilenceDuration: 15
+  isInRewardMode: 0
 --- !u!114 &1797229348
 MonoBehaviour:
   m_ObjectHideFlags: 0
