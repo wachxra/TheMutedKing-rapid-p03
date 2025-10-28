@@ -24,8 +24,6 @@ public class BeatIcon : MonoBehaviour
     private float moveStartTime;
     private bool isMoving = false;
 
-    public event System.Action OnMissed;
-
     public void Initialize(RhythmSystem system, BeatData data, Vector3 startPos, Vector3 endPos, Vector3 triggerPos, Sprite iconSprite)
     {
         parentSystem = system;
@@ -81,7 +79,7 @@ public class BeatIcon : MonoBehaviour
             }
 
             AudioManager.Instance?.PlaySFX("Attack");
-            OnMissed?.Invoke();
+            parentSystem.NotifyIconMissedOnTimeOut(this);
             Destroy(gameObject, 0.05f);
         }
     }
