@@ -2335,7 +2335,15 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 6d8478b76c4491d4c8656f0e6198b001, type: 3}
     volume: 1
     loop: 0
-  musicSounds: []
+  musicSounds:
+  - name: In-Game
+    clip: {fileID: 8300000, guid: 89462ed1ebb547b47bad5cf8ee85c466, type: 3}
+    volume: 1
+    loop: 1
+  - name: GameResult
+    clip: {fileID: 8300000, guid: 9c79c6b7ec07ea6489da7b66c927bdfb, type: 3}
+    volume: 1
+    loop: 1
 --- !u!4 &520093410
 Transform:
   m_ObjectHideFlags: 0
@@ -3718,15 +3726,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.784162, g: 1, b: 0.7311321, a: 1}
+  m_Color: {r: 0.65784794, g: 1, b: 0.5707547, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 8811905029117609889, guid: 48840ea9560362e4584c2bc458da3cb4, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -6754,15 +6762,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.74040085, b: 0.7294118, a: 1}
+  m_Color: {r: 1, g: 0.49466774, b: 0.4716981, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 8811905029117609889, guid: 48840ea9560362e4584c2bc458da3cb4, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
