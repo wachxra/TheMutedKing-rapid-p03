@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 public class EnemyController : MonoBehaviour
 {
@@ -21,6 +22,9 @@ public class EnemyController : MonoBehaviour
     public float spawnY = 0f;
     [HideInInspector] public Transform player;
 
+    [Header("Other")]
+    public Animator enemyAnimator;
+
     private float timeUntilNextAttack;
     private Rigidbody2D rb;
 
@@ -36,11 +40,23 @@ public class EnemyController : MonoBehaviour
             rb.gravityScale = 0f;
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
+
+        if (enemyAnimator == null)
+            enemyAnimator = GetComponent<Animator>();
     }
 
     void FixedUpdate()
     {
         if (player == null || PlayerController.Instance == null) return;
+
+        if (player.position.x > transform.position.x)
+        {
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
+        else if (player.position.x < transform.position.x)
+        {
+            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
 
         if (PlayerController.Instance.isInStealth)
         {
@@ -50,6 +66,7 @@ public class EnemyController : MonoBehaviour
                 RhythmSystem.Instance.DestroyIconsOfEnemy(this);
                 RhythmSystem.Instance.EndCombo(false);
             }
+            if (enemyAnimator != null) enemyAnimator.SetFloat("Speed", 0f);
             return;
         }
 
@@ -64,9 +81,13 @@ public class EnemyController : MonoBehaviour
             float dirX = player.position.x > transform.position.x ? 1f : -1f;
             Vector2 newPos = rb.position + new Vector2(dirX * moveSpeed * Time.fixedDeltaTime, 0f);
             rb.MovePosition(newPos);
+
+            if (enemyAnimator != null) enemyAnimator.SetFloat("Speed", moveSpeed);
         }
         else if (deltaX <= detectRangeX && deltaY <= detectRangeY)
         {
+            if (enemyAnimator != null) enemyAnimator.SetFloat("Speed", 0f);
+
             if (timeUntilNextAttack > 0)
                 timeUntilNextAttack -= Time.fixedDeltaTime;
             else
@@ -74,6 +95,10 @@ public class EnemyController : MonoBehaviour
                 StartRhythmAttack();
                 timeUntilNextAttack = attackCooldown;
             }
+        }
+        else
+        {
+            if (enemyAnimator != null) enemyAnimator.SetFloat("Speed", 0f);
         }
     }
 

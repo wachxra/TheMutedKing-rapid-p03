@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 public class RhythmSystem : MonoBehaviour
 {
@@ -38,6 +39,9 @@ public class RhythmSystem : MonoBehaviour
     public float minTimeBetweenHits = 0.3f;
     public float maxTimeBetweenHits = 1.0f;
     public float attackCooldown = 3f;
+
+    [Header("Enemy Animation Timing")]
+    public float enemyAttackAnimDuration = 0.5f;
 
     private List<BeatData> activeCombo;
     public List<BeatIcon> activeIcons = new List<BeatIcon>();
@@ -104,6 +108,7 @@ public class RhythmSystem : MonoBehaviour
 
         float triggerDistanceRatio = 0.5f;
         float safeMargin = 0.15f;
+        float cumulativeSpawnDelay = 0f;
 
         for (int i = 0; i < combo.Count; i++)
         {
@@ -118,6 +123,12 @@ public class RhythmSystem : MonoBehaviour
             {
                 beat.travelDuration = Random.Range(minTravelTime, maxTravelTime);
             }
+
+            float timeUntilReachTrigger = beat.travelDuration * triggerDistanceRatio;
+
+            float spawnDelay = timeUntilReachTrigger + safeMargin;
+
+            StartCoroutine(TriggerEnemyAttack(enemy, timeUntilReachTrigger));
 
             GameObject go = Instantiate(beatIconPrefab, beatPanel);
             BeatIcon icon = go.GetComponent<BeatIcon>();
@@ -153,15 +164,23 @@ public class RhythmSystem : MonoBehaviour
 
             icon.StartMove();
 
-            float timeUntilReachTrigger = beat.travelDuration * triggerDistanceRatio;
-            float spawnDelay = timeUntilReachTrigger + safeMargin;
-
+            cumulativeSpawnDelay += spawnDelay;
             yield return new WaitForSeconds(spawnDelay);
         }
 
         yield return new WaitUntil(() => activeIcons.Count == 0);
         EndCombo(true);
         isSpawning = false;
+    }
+
+    private IEnumerator TriggerEnemyAttack(EnemyController enemy, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        if (enemy != null && enemy.enemyAnimator != null)
+        {
+            enemy.enemyAnimator.SetTrigger("AttackRhythm");
+        }
     }
 
     public void TryParry(Direction pressedDirection)
