@@ -5446,7 +5446,6 @@ MonoBehaviour:
   maxWeaponUses: 10
   minSilenceDuration: 5
   maxSilenceDuration: 15
-  isInRewardMode: 0
 --- !u!114 &1797229348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6053,7 +6052,7 @@ MonoBehaviour:
   minTravelTime: 1
   maxTravelTime: 2.5
   dashRangeCheck: 1
-  ultimateTravelDuration: 2
+  ultimateTravelDuration: 1.5
   ultimateSoundDamage: 15
   minHitsInCombo: 3
   maxHitsInCombo: 8
