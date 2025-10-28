@@ -76,10 +76,19 @@ public class EnemyController : MonoBehaviour
 
         for (int i = 0; i < numHits; i++)
         {
+            Direction randomDir = (Direction)Random.Range(0, 5);
+
+            float travelDur = Random.Range(minTravelTime, maxTravelTime);
+
+            if (randomDir == Direction.Ultimate && RhythmSystem.Instance != null)
+            {
+                travelDur = RhythmSystem.Instance.ultimateTravelDuration;
+            }
+
             BeatData beat = new BeatData
             {
-                requiredDirection = (Direction)Random.Range(0, 4),
-                travelDuration = Random.Range(minTravelTime, maxTravelTime)
+                requiredDirection = randomDir,
+                travelDuration = travelDur
             };
             combo.Add(beat);
         }
@@ -98,6 +107,7 @@ public class EnemyController : MonoBehaviour
         {
             if (RhythmSystem.Instance != null)
             {
+                RhythmSystem.Instance.DestroyIconsOfEnemy(this);
                 RhythmSystem.Instance.EndCombo(false);
             }
 

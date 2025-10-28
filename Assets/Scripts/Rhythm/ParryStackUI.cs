@@ -38,7 +38,7 @@ public class ParryStackUI : MonoBehaviour
 
         if (parryStack >= requiredParryStacks)
         {
-            
+
         }
     }
 

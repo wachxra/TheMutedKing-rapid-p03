@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     public float moveInput;
     public bool canMove = true;
+    public float dashDistance = 5f;
+    public float dashCooldown = 1f;
+    private float timeUntilNextDash = 0f;
 
     [Header("Attack")]
     public Collider2D attackHitbox;
@@ -63,6 +66,8 @@ public class PlayerController : MonoBehaviour
         HandleInput();
         if (timeUntilNextAttack > 0f)
             timeUntilNextAttack -= Time.deltaTime;
+        if (timeUntilNextDash > 0f)
+            timeUntilNextDash -= Time.deltaTime;
 
         if (isInStealth)
         {
@@ -94,6 +99,12 @@ public class PlayerController : MonoBehaviour
         {
             moveInput = 0f;
             if (animator != null) animator.SetFloat("Speed", 0f);
+            return;
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canMove && timeUntilNextDash <= 0f)
+        {
+            TryDash();
             return;
         }
 
@@ -134,6 +145,18 @@ public class PlayerController : MonoBehaviour
     void Move()
     {
         rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
+    }
+
+    void TryDash()
+    {
+        if (timeUntilNextDash > 0f) return;
+        timeUntilNextDash = dashCooldown;
+        AudioManager.Instance?.PlaySFX("Dash");
+
+        float dashDirection = transform.localScale.x > 0 ? 1f : -1f;
+        transform.position += new Vector3(dashDirection * dashDistance, 0f, 0f);
+
+        RhythmSystem.Instance?.CheckUltimateAfterDash(transform.position);
     }
 
     private void OnCollisionStay2D(Collision2D collision)

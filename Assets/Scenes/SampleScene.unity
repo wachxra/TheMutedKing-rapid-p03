@@ -5004,7 +5004,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1733432991
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5446,7 +5446,6 @@ MonoBehaviour:
   maxWeaponUses: 10
   minSilenceDuration: 5
   maxSilenceDuration: 15
-  handUI: []
 --- !u!114 &1797229348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5893,6 +5892,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7088601270183982734, guid: d24e595739d088c46b9ad8991df42182, type: 3}
   m_PrefabInstance: {fileID: 4618929568976701438}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &2026728066 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7077731145357990413, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+  m_PrefabInstance: {fileID: 4618929568976701438}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2035977777
 GameObject:
   m_ObjectHideFlags: 0
@@ -6185,12 +6189,12 @@ GameObject:
   - component: {fileID: 2110622872}
   - component: {fileID: 2110622873}
   m_Layer: 5
-  m_Name: King-HP_Slider
+  m_Name: Invisible_Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2110622872
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6297,9 +6301,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 590409146}
     - target: {fileID: 815212601682451392, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: stealthSlider
+      value: 
+      objectReference: {fileID: 2110622873}
+    - target: {fileID: 815212601682451392, guid: d24e595739d088c46b9ad8991df42182, type: 3}
       propertyPath: attackCooldown
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 815212601682451392, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 2026728066}
     - target: {fileID: 815212601682451392, guid: d24e595739d088c46b9ad8991df42182, type: 3}
       propertyPath: parriesPerSprite
       value: 3

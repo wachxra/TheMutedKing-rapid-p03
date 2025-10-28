@@ -5,6 +5,7 @@ public class BeatIcon : MonoBehaviour
 {
     public float travelDuration;
     public Direction requiredDirection;
+    public float ultimateMissDamage;
 
     public bool hasBeenTriggered = false;
     public bool ReachedTrigger { get; private set; } = false;
@@ -30,6 +31,7 @@ public class BeatIcon : MonoBehaviour
         parentSystem = system;
         requiredDirection = data.requiredDirection;
         travelDuration = data.travelDuration;
+        ultimateMissDamage = data.ultimateMissSoundDamage;
 
         rectTransform = GetComponent<RectTransform>();
         iconImage = GetComponent<Image>();
@@ -72,7 +74,18 @@ public class BeatIcon : MonoBehaviour
         {
             hasBeenTriggered = true;
             AudioManager.Instance?.PlaySFX("Attack");
-            OnMissed?.Invoke();
+
+            if (requiredDirection == Direction.Ultimate)
+            {
+                SoundMeterSystem.Instance?.AddSound(ultimateMissDamage);
+                Debug.Log("Ultimate Beat Missed! Huge Sound Added.");
+                parentSystem.EndCombo(false);
+            }
+            else
+            {
+                OnMissed?.Invoke();
+            }
+
             Destroy(gameObject, 0.05f);
         }
     }

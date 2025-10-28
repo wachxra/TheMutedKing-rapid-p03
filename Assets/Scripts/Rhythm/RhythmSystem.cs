@@ -20,11 +20,17 @@ public class RhythmSystem : MonoBehaviour
     public Sprite downSprite;
     public Sprite leftSprite;
     public Sprite rightSprite;
+    public Sprite ultimateSprite;
 
     [Header("Timing Settings")]
     public float perfectTimingWindow = 0.08f;
     public float minTravelTime = 1.0f;
     public float maxTravelTime = 2.5f;
+
+    [Header("Ultimate Beat Settings")]
+    public float dashRangeCheck = 1f;
+    public float ultimateTravelDuration = 1.5f;
+    public float ultimateSoundDamage = 30f;
 
     [Header("Enemy Combo Settings")]
     public int minHitsInCombo = 3;
@@ -71,6 +77,7 @@ public class RhythmSystem : MonoBehaviour
             Direction.Down => downSprite,
             Direction.Left => leftSprite,
             Direction.Right => rightSprite,
+            Direction.Ultimate => ultimateSprite,
             _ => null
         };
     }
@@ -94,7 +101,15 @@ public class RhythmSystem : MonoBehaviour
         {
             BeatData beat = combo[i];
 
-            beat.travelDuration = Random.Range(minTravelTime, maxTravelTime);
+            if (beat.requiredDirection == Direction.Ultimate)
+            {
+                beat.travelDuration = ultimateTravelDuration;
+                beat.ultimateMissSoundDamage = ultimateSoundDamage;
+            }
+            else
+            {
+                beat.travelDuration = Random.Range(minTravelTime, maxTravelTime);
+            }
 
             GameObject go = Instantiate(beatIconPrefab, beatPanel);
             BeatIcon icon = go.GetComponent<BeatIcon>();
@@ -152,6 +167,7 @@ public class RhythmSystem : MonoBehaviour
         foreach (var icon in activeIcons)
         {
             if (icon == null || icon.hasBeenTriggered) continue;
+            if (icon.requiredDirection == Direction.Ultimate) continue;
 
             float dist = Vector3.Distance(icon.RectTransform.localPosition, icon.TriggerPosition);
             if (dist < closestDist)
@@ -181,6 +197,48 @@ public class RhythmSystem : MonoBehaviour
         RemoveAndDestroyIcon(target);
     }
 
+    public void CheckUltimateAfterDash(Vector3 playerPosition)
+    {
+        for (int i = activeIcons.Count - 1; i >= 0; i--)
+        {
+            BeatIcon icon = activeIcons[i];
+
+            if (icon == null || icon.requiredDirection != Direction.Ultimate || icon.hasBeenTriggered) continue;
+
+            if (icon.IsWithinTrigger())
+            {
+                if (Vector3.Distance(playerPosition, icon.enemy.transform.position) > dashRangeCheck)
+                {
+                    Debug.Log("Ultimate Dodged by Dash! Combo Ended Successfully.");
+                    RemoveAndDestroyIcon(icon);
+                    EndCombo(true);
+                    return;
+                }
+                else
+                {
+                    Debug.Log("Ultimate Missed: Dash was too close!");
+
+                    SoundMeterSystem.Instance?.AddSound(icon.ultimateMissDamage);
+                    RemoveAndDestroyIcon(icon);
+                    EndCombo(false);
+                    return;
+                }
+            }
+        }
+    }
+
+    public void DestroyIconsOfEnemy(EnemyController enemy)
+    {
+        for (int i = activeIcons.Count - 1; i >= 0; i--)
+        {
+            if (activeIcons[i] != null && activeIcons[i].enemy == enemy)
+            {
+                Destroy(activeIcons[i].gameObject);
+                activeIcons.RemoveAt(i);
+            }
+        }
+    }
+
     public void NotifyIconMissed(BeatIcon icon)
     {
         if (activeIcons.Contains(icon))
@@ -205,7 +263,13 @@ public class RhythmSystem : MonoBehaviour
         Debug.Log(success ? "Combo Complete!" : "Combo Ended");
 
         activeCombo = null;
+
+        for (int i = activeIcons.Count - 1; i >= 0; i--)
+        {
+            if (activeIcons[i] != null) Destroy(activeIcons[i].gameObject);
+        }
         activeIcons.Clear();
+
         isSpawning = false;
     }
 }
