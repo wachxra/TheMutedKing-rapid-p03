@@ -1,8 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 public class TeleportPoint : MonoBehaviour
 {
+    public static event Action<int> OnTeleport;
+
+    [Header("Teleport Settings")]
+    [Tooltip("ID ของชั้นปลายทางหลังจากการวาร์ป (เช่น 0=ชั้น1, 1=ชั้น2, 2=ชั้น3)")]
+    public int destinationLevelID;
     public List<Transform> destinationPoints;
 
     [Tooltip("UI text")]
@@ -61,7 +67,7 @@ public class TeleportPoint : MonoBehaviour
             return;
         }
 
-        int randomIndex = Random.Range(0, destinationPoints.Count);
+        int randomIndex = UnityEngine.Random.Range(0, destinationPoints.Count);
         Transform destination = destinationPoints[randomIndex];
 
         playerTransform.position = destination.position;
@@ -73,6 +79,8 @@ public class TeleportPoint : MonoBehaviour
         }
 
         AudioManager.Instance?.PlaySFX("Teleport");
+
+        OnTeleport?.Invoke(destinationLevelID);
 
         if (interactUI != null)
         {
