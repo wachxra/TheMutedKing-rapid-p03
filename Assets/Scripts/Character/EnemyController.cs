@@ -24,8 +24,6 @@ public class EnemyController : MonoBehaviour
     private float timeUntilNextAttack;
     private Rigidbody2D rb;
 
-    private bool isColliding = false;
-
     void Awake()
     {
         currentHP = maxHP;
@@ -37,30 +35,6 @@ public class EnemyController : MonoBehaviour
             rb.bodyType = RigidbodyType2D.Kinematic;
             rb.gravityScale = 0f;
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-        }
-    }
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Enemy"))
-        {
-            isColliding = true;
-        }
-    }
-
-    void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Enemy"))
-        {
-            isColliding = true;
-        }
-    }
-
-    void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Enemy"))
-        {
-            isColliding = false;
         }
     }
 

@@ -44,6 +44,9 @@ public class PlayerController : MonoBehaviour
     [Header("Dash Settings")]
     public LayerMask dashStopLayer;
 
+    [Header("Audio")]
+    public AudioSource bgmSource;
+
     void Awake()
     {
         if (Instance == null) Instance = this;
@@ -58,6 +61,9 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         if (soundMeterUI != null) soundMeterUI.SetActive(false);
         if (attackHitbox != null) attackHitbox.enabled = false;
+
+        if (bgmSource == null)
+            bgmSource = Camera.main.GetComponent<AudioSource>();
 
         if (parryStackUI == null)
             parryStackUI = FindFirstObjectByType<ParryStackUI>();
@@ -341,6 +347,8 @@ public class PlayerController : MonoBehaviour
         isInStealth = true;
         stealthTimer = stealthDuration;
 
+        bgmSource?.Pause();
+
         if (stealthSlider != null)
         {
             stealthSlider.maxValue = stealthDuration;
@@ -388,6 +396,8 @@ public class PlayerController : MonoBehaviour
             c.a = 1f;
             spriteRenderer.color = c;
         }
+
+        bgmSource?.UnPause();
 
         Debug.Log("Exited Stealth Mode");
     }
