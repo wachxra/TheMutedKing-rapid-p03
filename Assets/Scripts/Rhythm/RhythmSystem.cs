@@ -44,6 +44,10 @@ public class RhythmSystem : MonoBehaviour
     private float timeUntilNextAttack;
     private bool isSpawning = false;
 
+    private int perfectParryCounter = 0;
+    private int totalBeatsInCurrentCombo = 0;
+    private bool isComboPerfect = true;
+
     void Awake()
     {
         if (Instance == null) Instance = this;
@@ -84,6 +88,10 @@ public class RhythmSystem : MonoBehaviour
 
     public void StartEnemyComboFromList(List<BeatData> combo, EnemyController enemy)
     {
+        perfectParryCounter = 0;
+        totalBeatsInCurrentCombo = combo.Count;
+        isComboPerfect = true;
+
         StartCoroutine(SpawnBeatsSequentially(combo, enemy));
     }
 
@@ -142,7 +150,7 @@ public class RhythmSystem : MonoBehaviour
             icon.enemy = enemy;
 
             activeIcons.Add(icon);
-            icon.OnMissed += () => NotifyIconMissed(icon);
+
             icon.StartMove();
 
             float timeUntilReachTrigger = beat.travelDuration * triggerDistanceRatio;
@@ -182,7 +190,9 @@ public class RhythmSystem : MonoBehaviour
         {
             Debug.Log("Perfect Parry!");
             AudioManager.Instance?.PlaySFX("PerfectParry");
+
             PlayerController.Instance?.OnPerfectParry(target.enemy);
+
         }
         else
         {
@@ -191,9 +201,29 @@ public class RhythmSystem : MonoBehaviour
 
             if (target.enemy != null)
                 SoundMeterSystem.Instance?.AddSound(target.enemy.damage);
+
+            isComboPerfect = false;
         }
 
         RemoveAndDestroyIcon(target);
+    }
+
+    public void NotifyPerfectParry(EnemyController enemy)
+    {
+        perfectParryCounter++;
+    }
+
+    public void NotifyIconMissed(BeatIcon icon)
+    {
+        if (activeIcons.Contains(icon))
+        {
+            if (!icon.IsWithinTrigger() && icon.enemy != null)
+                SoundMeterSystem.Instance?.AddSound(icon.enemy.damage);
+
+            isComboPerfect = false;
+
+            RemoveAndDestroyIcon(icon);
+        }
     }
 
     public void CheckUltimateAfterDash(Vector3 playerPosition)
@@ -211,12 +241,16 @@ public class RhythmSystem : MonoBehaviour
                 if (distance > dashRangeCheck)
                 {
                     AudioManager.Instance?.PlaySFX("PerfectParry");
+
+                    NotifyPerfectParry(icon.enemy);
                     RemoveAndDestroyIcon(icon);
                 }
                 else
                 {
                     AudioManager.Instance?.PlaySFX("Attack");
                     SoundMeterSystem.Instance?.AddSound(icon.ultimateMissDamage);
+
+                    isComboPerfect = false;
                     RemoveAndDestroyIcon(icon);
                 }
             }
@@ -235,17 +269,6 @@ public class RhythmSystem : MonoBehaviour
         }
     }
 
-    public void NotifyIconMissed(BeatIcon icon)
-    {
-        if (activeIcons.Contains(icon))
-        {
-            if (!icon.IsWithinTrigger() && icon.enemy != null)
-                SoundMeterSystem.Instance?.AddSound(icon.enemy.damage);
-
-            RemoveAndDestroyIcon(icon);
-        }
-    }
-
     private void RemoveAndDestroyIcon(BeatIcon icon)
     {
         if (icon == null) return;
@@ -257,6 +280,16 @@ public class RhythmSystem : MonoBehaviour
     public void EndCombo(bool success)
     {
         Debug.Log(success ? "Combo Complete!" : "Combo Ended");
+
+        if (success && isComboPerfect && perfectParryCounter == totalBeatsInCurrentCombo && totalBeatsInCurrentCombo > 0)
+        {
+            PlayerController.Instance?.ApplyPerfectComboReward();
+            Debug.Log("PERFECT COMBO ACHIEVED! Player Healed.");
+        }
+
+        perfectParryCounter = 0;
+        totalBeatsInCurrentCombo = 0;
+        isComboPerfect = true;
 
         activeCombo = null;
 

@@ -36,6 +36,11 @@ public class PlayerController : MonoBehaviour
     [Header("UI References")]
     public ParryStackUI parryStackUI;
 
+    [Header("Perfect Parry Combo Reward")]
+    public bool healPlayerHPOnPerfectCombo = true;
+    public bool healPlayerSoundOnPerfectCombo = false;
+    public int perfectComboHealAmount = 5;
+
     void Awake()
     {
         if (Instance == null) Instance = this;
@@ -269,6 +274,20 @@ public class PlayerController : MonoBehaviour
         if (enemy == null) return;
         parryStackUI?.AddStack();
         lastEnemyHit = enemy;
+        RhythmSystem.Instance?.NotifyPerfectParry(enemy);
+    }
+
+    public void ApplyPerfectComboReward()
+    {
+        if (SoundMeterSystem.Instance != null)
+        {
+            SoundMeterSystem.Instance.HealHPOrSound(
+                perfectComboHealAmount,
+                healPlayerHPOnPerfectCombo,
+                healPlayerSoundOnPerfectCombo
+            );
+            Debug.Log($"Perfect Combo Reward Applied: Heal by {perfectComboHealAmount} (Noise Reduced).");
+        }
     }
 
     [Header("Stealth Settings")]

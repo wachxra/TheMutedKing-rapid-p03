@@ -138,6 +138,18 @@ public class SoundMeterSystem : MonoBehaviour
             TriggerGameOver();
     }
 
+    public void HealHPOrSound(int amount, bool healHP, bool healSound)
+    {
+        if (isGameOver) return;
+
+        if (healHP || healSound)
+        {
+            currentSoundPlayerHP -= amount;
+            currentSoundPlayerHP = Mathf.Clamp(currentSoundPlayerHP, 0, maxSoundPlayerHP);
+            UpdateAccumulatedUI();
+        }
+    }
+
     void UpdateDetectedUI()
     {
         int spriteIndex = currentDetectedLevel;
