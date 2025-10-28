@@ -116,7 +116,6 @@ public class RhythmSystem : MonoBehaviour
 
             if (icon == null)
             {
-                Debug.LogError("BeatIcon component missing on prefab");
                 Destroy(go);
                 EndCombo(false);
                 isSpawning = false;
@@ -202,26 +201,23 @@ public class RhythmSystem : MonoBehaviour
         for (int i = activeIcons.Count - 1; i >= 0; i--)
         {
             BeatIcon icon = activeIcons[i];
-
-            if (icon == null || icon.requiredDirection != Direction.Ultimate || icon.hasBeenTriggered) continue;
+            if (icon == null || icon.requiredDirection != Direction.Ultimate || icon.hasBeenTriggered)
+                continue;
 
             if (icon.IsWithinTrigger())
             {
-                if (Vector3.Distance(playerPosition, icon.enemy.transform.position) > dashRangeCheck)
+                float distance = Vector3.Distance(playerPosition, icon.enemy.transform.position);
+
+                if (distance > dashRangeCheck)
                 {
-                    Debug.Log("Ultimate Dodged by Dash! Combo Ended Successfully.");
+                    AudioManager.Instance?.PlaySFX("PerfectParry");
                     RemoveAndDestroyIcon(icon);
-                    EndCombo(true);
-                    return;
                 }
                 else
                 {
-                    Debug.Log("Ultimate Missed: Dash was too close!");
-
+                    AudioManager.Instance?.PlaySFX("Attack");
                     SoundMeterSystem.Instance?.AddSound(icon.ultimateMissDamage);
                     RemoveAndDestroyIcon(icon);
-                    EndCombo(false);
-                    return;
                 }
             }
         }

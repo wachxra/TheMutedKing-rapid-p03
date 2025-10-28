@@ -66,26 +66,22 @@ public class BeatIcon : MonoBehaviour
         rectTransform.localPosition = Vector3.Lerp(startPosition, endPosition, t);
 
         if (!ReachedTrigger && Vector3.Distance(rectTransform.localPosition, TriggerPosition) <= parentSystem.triggerDistance)
-        {
             ReachedTrigger = true;
-        }
 
         if (t >= 1f && !hasBeenTriggered)
         {
             hasBeenTriggered = true;
-            AudioManager.Instance?.PlaySFX("Attack");
 
             if (requiredDirection == Direction.Ultimate)
             {
+                AudioManager.Instance?.PlaySFX("Attack");
                 SoundMeterSystem.Instance?.AddSound(ultimateMissDamage);
-                Debug.Log("Ultimate Beat Missed! Huge Sound Added.");
-                parentSystem.EndCombo(false);
-            }
-            else
-            {
-                OnMissed?.Invoke();
+                Destroy(gameObject, 0.05f);
+                return;
             }
 
+            AudioManager.Instance?.PlaySFX("Attack");
+            OnMissed?.Invoke();
             Destroy(gameObject, 0.05f);
         }
     }
