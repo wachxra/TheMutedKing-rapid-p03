@@ -2335,6 +2335,10 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 6d8478b76c4491d4c8656f0e6198b001, type: 3}
     volume: 1
     loop: 0
+  - name: Dash
+    clip: {fileID: 8300000, guid: 3cef4038d8f9d4047828aecce912a6d8, type: 3}
+    volume: 0.4
+    loop: 0
   musicSounds:
   - name: In-Game
     clip: {fileID: 8300000, guid: 89462ed1ebb547b47bad5cf8ee85c466, type: 3}
