@@ -448,6 +448,12 @@ public class CardFusionSystem : MonoBehaviour
             if (outline == null)
                 outline = cardUI.AddComponent<Outline>();
 
+            if (isInRewardMode)
+            {
+                outline.enabled = false;
+                continue;
+            }
+
             if (i == currentIndex)
             {
                 outline.effectColor = Color.yellow;
