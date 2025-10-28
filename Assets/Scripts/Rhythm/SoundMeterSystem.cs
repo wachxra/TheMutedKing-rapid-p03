@@ -120,7 +120,17 @@ public class SoundMeterSystem : MonoBehaviour
     {
         if (isGameOver) return;
 
-        currentSoundPlayerHP += Mathf.RoundToInt(amount);
+        float finalSoundAmount = amount;
+        float silenceBuff = 0f;
+
+        if (CardFusionSystem.Instance != null)
+        {
+            silenceBuff = CardFusionSystem.Instance.GetSilenceBuff();
+        }
+
+        finalSoundAmount = Mathf.Max(0f, amount - silenceBuff);
+
+        currentSoundPlayerHP += Mathf.RoundToInt(finalSoundAmount);
         currentSoundPlayerHP = Mathf.Clamp(currentSoundPlayerHP, 0, maxSoundPlayerHP);
         UpdateAccumulatedUI();
 

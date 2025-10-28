@@ -476,6 +476,7 @@ public class CardFusionSystem : MonoBehaviour
         {
             if (slot.slotType == CardSlotType.SilenceGearSlot && slot.currentCard != null && slot.remainingDuration > 0f)
             {
+                Debug.Log($"Active Silence Buff: {slot.currentCard.silence} for {slot.remainingDuration:F1}s");
                 return slot.currentCard.silence;
             }
         }

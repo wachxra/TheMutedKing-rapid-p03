@@ -6047,9 +6047,13 @@ MonoBehaviour:
   downSprite: {fileID: 21300000, guid: 29e31833c32435a479338cf97dff5d06, type: 3}
   leftSprite: {fileID: 21300000, guid: 02c93ab47b59c5b4a8426f579f2a1a2b, type: 3}
   rightSprite: {fileID: 21300000, guid: 02b3a7138fad1604694cf245ab1ca59d, type: 3}
+  ultimateSprite: {fileID: 21300000, guid: 1bb66208e276b0b499d31d402deefad0, type: 3}
   perfectTimingWindow: 1
   minTravelTime: 1
   maxTravelTime: 2.5
+  dashRangeCheck: 1
+  ultimateTravelDuration: 1.5
+  ultimateSoundDamage: 15
   minHitsInCombo: 3
   maxHitsInCombo: 8
   minTimeBetweenHits: 0.3
@@ -6288,6 +6292,10 @@ PrefabInstance:
       propertyPath: ghostSlider
       value: 
       objectReference: {fileID: 2110622873}
+    - target: {fileID: 815212601682451392, guid: d24e595739d088c46b9ad8991df42182, type: 3}
+      propertyPath: dashDistance
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 815212601682451392, guid: d24e595739d088c46b9ad8991df42182, type: 3}
       propertyPath: parryStackUI
       value: 
