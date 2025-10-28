@@ -46,6 +46,19 @@ public class EnemyController : MonoBehaviour
     {
         if (player == null || PlayerController.Instance == null) return;
 
+        if (PlayerController.Instance.isInStealth)
+        {
+            timeUntilNextAttack = attackCooldown;
+
+            if (RhythmSystem.Instance != null)
+            {
+                RhythmSystem.Instance.DestroyIconsOfEnemy(this);
+                RhythmSystem.Instance.EndCombo(false);
+            }
+
+            return;
+        }
+
         float distance = Mathf.Abs(player.position.x - transform.position.x);
 
         if (distance > detectRange)
