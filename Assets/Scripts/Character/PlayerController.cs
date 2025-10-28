@@ -45,6 +45,9 @@ public class PlayerController : MonoBehaviour
     {
         if (Instance == null) Instance = this;
         else if (Instance != this) Destroy(gameObject);
+
+        if (cardManager == null)
+            cardManager = CardManager.Instance;
     }
 
     void Start()

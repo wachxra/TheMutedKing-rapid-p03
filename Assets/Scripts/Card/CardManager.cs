@@ -20,6 +20,12 @@ public class CardManager : MonoBehaviour
     [Header("Fusion Table")]
     public List<FusionResult> fusionTable;
 
+    void Awake()
+    {
+        if (Instance == null) Instance = this;
+        else if (Instance != this) Destroy(gameObject);
+    }
+
     public Card GetRandomCardByType(CardType type)
     {
         List<Card> cardsOfType = deck.FindAll(c => c.cardType == type);
