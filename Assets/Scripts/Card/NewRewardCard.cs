@@ -64,7 +64,6 @@ public class NewRewardCard : MonoBehaviour
                 {
                     rt.localScale = Vector3.one;
                     rt.localPosition = Vector3.zero;
-
                     rt.sizeDelta = new Vector2(1200, 800);
                 }
 
@@ -79,7 +78,6 @@ public class NewRewardCard : MonoBehaviour
                 if (txt != null)
                     txt.text = currentCards[i].cardName;
             }
-
         }
 
         selectedIndex = 0;
@@ -87,6 +85,13 @@ public class NewRewardCard : MonoBehaviour
 
         panel.SetActive(true);
         Time.timeScale = 0f;
+
+        if (CardFusionSystem.Instance != null)
+        {
+            CardFusionSystem.Instance.isInRewardMode = true;
+            CardFusionSystem.Instance.OpenHandPanel(true);
+            CardFusionSystem.Instance.RefreshHandUI(true);
+        }
     }
 
     private void UpdateSlotHighlight()
@@ -103,6 +108,13 @@ public class NewRewardCard : MonoBehaviour
     {
         panel.SetActive(false);
         Time.timeScale = 1f;
+
+        if (CardFusionSystem.Instance != null)
+        {
+            CardFusionSystem.Instance.isInRewardMode = false;
+            CardFusionSystem.Instance.CloseHandPanel();
+        }
+
         onCardChosen?.Invoke(card);
         currentCards.Clear();
     }

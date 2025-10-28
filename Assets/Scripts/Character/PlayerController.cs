@@ -198,7 +198,7 @@ public class PlayerController : MonoBehaviour
     {
         if (timeUntilNextDash > 0f) return;
         timeUntilNextDash = dashCooldown;
-        AudioManager.Instance?.PlaySFX("Dash");
+        AudioManager.Instance?.PlaySFX("PerfectParry");
 
         float dashDirection = transform.localScale.x > 0 ? 1f : -1f;
         transform.position += new Vector3(dashDirection * dashDistance, 0f, 0f);

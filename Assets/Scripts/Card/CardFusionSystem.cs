@@ -482,4 +482,19 @@ public class CardFusionSystem : MonoBehaviour
         }
         return 0f;
     }
+    public void OpenHandPanel(bool animate = false)
+    {
+        if (handPanel != null && !handPanel.activeSelf)
+            handPanel.SetActive(true);
+
+        RefreshHandUI(animate);
+    }
+
+    public bool isInRewardMode = false;
+
+    public void CloseHandPanel()
+    {
+        if (handPanel != null && handPanel.activeSelf)
+            handPanel.SetActive(false);
+    }
 }
