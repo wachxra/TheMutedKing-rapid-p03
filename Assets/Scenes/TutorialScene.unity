@@ -4477,6 +4477,12 @@ MonoBehaviour:
     loop: 0
     playOnAwake: 0
     source: {fileID: 0}
+  - name: Chest
+    clip: {fileID: 8300000, guid: 6c8238aaed02a0944997782ff382a2f3, type: 3}
+    volume: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
   musicSounds: []
 --- !u!4 &520093410
 Transform:
