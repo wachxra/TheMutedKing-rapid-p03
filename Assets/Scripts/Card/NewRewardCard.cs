@@ -28,11 +28,13 @@ public class NewRewardCard : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             selectedIndex = (selectedIndex - 1 + currentCards.Count) % currentCards.Count;
+            AudioManager.Instance?.PlaySFX("Card");
             UpdateSlotHighlight();
         }
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             selectedIndex = (selectedIndex + 1) % currentCards.Count;
+            AudioManager.Instance?.PlaySFX("Card");
             UpdateSlotHighlight();
         }
 
@@ -108,6 +110,8 @@ public class NewRewardCard : MonoBehaviour
     {
         panel.SetActive(false);
         Time.timeScale = 1f;
+
+        AudioManager.Instance?.PlaySFX("Slot");
 
         if (CardFusionSystem.Instance != null)
         {

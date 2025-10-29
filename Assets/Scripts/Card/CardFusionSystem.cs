@@ -63,9 +63,15 @@ public class CardFusionSystem : MonoBehaviour
     void HandleSlotMovement()
     {
         if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
             currentSlotIndex = (currentSlotIndex - 1 + slots.Count) % slots.Count;
+            AudioManager.Instance?.PlaySFX("Card");
+        }
         if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
             currentSlotIndex = (currentSlotIndex + 1) % slots.Count;
+            AudioManager.Instance?.PlaySFX("Card");
+        }
 
         GameObject fusedUI = null;
         if (handCardUI.ContainsKey(activeFusionCard))
@@ -96,6 +102,8 @@ public class CardFusionSystem : MonoBehaviour
 
         if (HandleCardPlacement(currentSlot, activeFusionCard))
         {
+            AudioManager.Instance?.PlaySFX("Slot");
+
             if (fusedUI != null && currentSlot.slotTransform != null)
             {
                 fusedUI.transform.SetParent(currentSlot.slotTransform);
@@ -217,6 +225,8 @@ public class CardFusionSystem : MonoBehaviour
         if (currentIndex < 0)
             currentIndex += cardManager.hand.Count;
 
+        AudioManager.Instance?.PlaySFX("Card");
+
         UpdateCardPositions();
     }
 
@@ -256,10 +266,13 @@ public class CardFusionSystem : MonoBehaviour
         if (fused == null)
         {
             Debug.Log("Fusion failed: Cards are the same type!");
+            AudioManager.Instance?.PlaySFX("Fail");
             selectedCards.Clear();
             UpdateCardPositions();
             return;
         }
+
+        AudioManager.Instance?.PlaySFX("FusionCard");
 
         cardManager.hand.Remove(selectedCards[0]);
         cardManager.hand.Remove(selectedCards[1]);

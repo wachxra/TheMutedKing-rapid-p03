@@ -14668,6 +14668,24 @@ MonoBehaviour:
     loop: 0
     playOnAwake: 0
     source: {fileID: 0}
+  - name: FusionCard
+    clip: {fileID: 8300000, guid: 53d5bc26aa98fa84ca78dcc9859f49cb, type: 3}
+    volume: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Card
+    clip: {fileID: 8300000, guid: a150eb57d530b4449864685f5404ce02, type: 3}
+    volume: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Slot
+    clip: {fileID: 8300000, guid: e66991f0f3d93f8469c3d83fe8fb42bb, type: 3}
+    volume: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
   musicSounds: []
 --- !u!4 &520093410
 Transform:
@@ -29962,6 +29980,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1569535284}
+  - {fileID: 227296002}
   - {fileID: 590409147}
   - {fileID: 1760101019}
   - {fileID: 1753673836}
@@ -29974,7 +29993,6 @@ RectTransform:
   - {fileID: 678479195}
   - {fileID: 41248760}
   - {fileID: 680804721}
-  - {fileID: 227296002}
   - {fileID: 501592189}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
