@@ -34,6 +34,7 @@ public class Chest : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
+                AudioManager.Instance?.PlaySFX("Toggle");
                 OpenChest();
             }
         }
