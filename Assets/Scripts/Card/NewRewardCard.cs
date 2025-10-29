@@ -102,7 +102,7 @@ public class NewRewardCard : MonoBehaviour
         {
             Image slotImage = slots[i].GetComponent<Image>();
             if (slotImage != null)
-                slotImage.color = (i == selectedIndex) ? Color.yellow : Color.white;
+                slotImage.color = (i == selectedIndex) ? Color.yellow : new Color(0.3f, 0.3f, 0.3f);
         }
     }
 

@@ -470,7 +470,7 @@ public class CardFusionSystem : MonoBehaviour
             if (i == currentIndex)
             {
                 outline.effectColor = Color.yellow;
-                outline.effectDistance = new Vector2(5f, 5f);
+                outline.effectDistance = new Vector2(10f, 10f);
                 outline.enabled = true;
             }
             else

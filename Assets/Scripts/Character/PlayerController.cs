@@ -109,9 +109,13 @@ public class PlayerController : MonoBehaviour
             AudioManager.Instance?.PlaySFX("Toggle");
 
             if (isInCardMode)
+            {
                 CardFusionSystem.Instance?.OpenCardMode();
+            }
             else
+            {
                 CardFusionSystem.Instance?.CloseCardMode();
+            }
 
             return;
         }
