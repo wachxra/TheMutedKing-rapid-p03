@@ -14686,6 +14686,18 @@ MonoBehaviour:
     loop: 0
     playOnAwake: 0
     source: {fileID: 0}
+  - name: Fail
+    clip: {fileID: 8300000, guid: 6c8238aaed02a0944997782ff382a2f3, type: 3}
+    volume: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Toggle
+    clip: {fileID: 8300000, guid: e66991f0f3d93f8469c3d83fe8fb42bb, type: 3}
+    volume: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
   musicSounds: []
 --- !u!4 &520093410
 Transform:
