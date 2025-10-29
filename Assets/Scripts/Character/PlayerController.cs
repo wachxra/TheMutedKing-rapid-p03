@@ -356,6 +356,7 @@ public class PlayerController : MonoBehaviour
         stealthTimer = stealthDuration;
 
         bgmSource?.Pause();
+        AudioManager.Instance?.StopAllSFX();
 
         if (stealthSlider != null)
         {

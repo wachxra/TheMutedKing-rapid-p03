@@ -12,6 +12,8 @@ public class AudioManager : MonoBehaviour
         public AudioClip clip;
         [Range(0f, 1f)] public float volume = 1f;
         public bool loop = false;
+        public bool playOnAwake = false;
+        [HideInInspector] public AudioSource source;
     }
 
     [Header("SFX Library")]
@@ -44,21 +46,43 @@ public class AudioManager : MonoBehaviour
         musicSource.loop = true;
 
         foreach (Sound s in sfxSounds)
-            sfxDict[s.name] = s;
+        {
+            if (s.clip != null)
+            {
+                s.source = gameObject.AddComponent<AudioSource>();
+                s.source.clip = s.clip;
+                s.source.volume = s.volume;
+                s.source.loop = s.loop;
+                s.source.playOnAwake = false;
+                sfxDict[s.name] = s;
+            }
+        }
 
         foreach (Sound s in musicSounds)
-            musicDict[s.name] = s;
+        {
+            if (s.clip != null)
+            {
+                s.source = gameObject.AddComponent<AudioSource>();
+                s.source.clip = s.clip;
+                s.source.volume = s.volume;
+                s.source.loop = s.loop;
+                s.source.playOnAwake = false;
+                musicDict[s.name] = s;
+            }
+        }
     }
 
     public void PlaySFX(string soundName)
     {
+        if (PlayerController.Instance != null && PlayerController.Instance.isInStealth)
+        {
+            StopAllSFX();
+            return;
+        }
+
         if (sfxDict.TryGetValue(soundName, out Sound s))
         {
-            sfxSource.PlayOneShot(s.clip, s.volume);
-        }
-        else
-        {
-            Debug.LogWarning($"[AudioManager] SFX '{soundName}' not found!");
+            s.source.Play();
         }
     }
 
