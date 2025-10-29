@@ -183,7 +183,8 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
-        rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
+        Vector2 target = rb.position + new Vector2(moveInput * moveSpeed * Time.fixedDeltaTime, 0f);
+        rb.MovePosition(target);
     }
 
     void TryDash()
