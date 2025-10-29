@@ -818,8 +818,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.12071793, y: 0.629161, z: 1.2147716}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1388832978}
+  m_Children: []
   m_Father: {fileID: 1689656791}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
@@ -9223,8 +9222,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.12071793, y: 0.629161, z: 1.2147716}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1916406658}
+  m_Children: []
   m_Father: {fileID: 1689656791}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
@@ -11807,14 +11805,14 @@ RectTransform:
   m_GameObject: {fileID: 1346326665}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 9.382977, y: 4.3686876, z: 1}
+  m_LocalScale: {x: 1.1326936, y: 2.7486076, z: 1.2147716}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1396754442}
+  m_Father: {fileID: 1689656791}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00021362305, y: -0.000061035156}
+  m_AnchoredPosition: {x: -399.99902, y: 24.99998}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1346326667
@@ -12368,14 +12366,14 @@ RectTransform:
   m_GameObject: {fileID: 1388832977}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 9.382977, y: 4.3686876, z: 1}
+  m_LocalScale: {x: 1.1326936, y: 2.7486076, z: 1.2147716}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 115448984}
+  m_Father: {fileID: 1689656791}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -8.999725, y: 0.00012207031}
+  m_AnchoredPosition: {x: 398.9135, y: 24.99998}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1388832979
@@ -12523,8 +12521,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.12071793, y: 0.629161, z: 1.2147716}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1346326666}
+  m_Children: []
   m_Father: {fileID: 1689656791}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
@@ -29087,6 +29084,9 @@ RectTransform:
   - {fileID: 1396754442}
   - {fileID: 1034412749}
   - {fileID: 115448984}
+  - {fileID: 1346326666}
+  - {fileID: 1916406658}
+  - {fileID: 1388832978}
   m_Father: {fileID: 198712788}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -29900,70 +29900,70 @@ MonoBehaviour:
   - cardName: 1
     damage: 4
     silence: 3
-    cardSprite: {fileID: 21300000, guid: ed9cf08cb520d9742ae5413681770709, type: 3}
+    cardSprite: {fileID: 668549173602180315, guid: e17e7e8128b08e643ab029e468f46c68, type: 3}
     slotType: 0
     cardType: 0
     isSelected: 0
   - cardName: 2
     damage: 3
     silence: 2
-    cardSprite: {fileID: 21300000, guid: 79eb4b36d1216ff4bbb74fca9c97790d, type: 3}
+    cardSprite: {fileID: 2461473455301774926, guid: b480b32fc832920429856e42ebe729be, type: 3}
     slotType: 0
     cardType: 0
     isSelected: 0
   - cardName: 3
     damage: 1
     silence: -2
-    cardSprite: {fileID: 21300000, guid: 05ca4c96aa587624483da04f292b75de, type: 3}
+    cardSprite: {fileID: 8681320295789122964, guid: 7134ebda2e4be6a41a786e7b8830d55a, type: 3}
     slotType: 0
     cardType: 0
     isSelected: 0
   - cardName: 4
     damage: 2
     silence: 1
-    cardSprite: {fileID: 21300000, guid: 424baa29c712ddd43a79311f9c8f5775, type: 3}
+    cardSprite: {fileID: -5597123129651082215, guid: 76281148d92ff9e40ac3369cb3b5259d, type: 3}
     slotType: 0
     cardType: 0
     isSelected: 0
   - cardName: 5
     damage: 5
     silence: 5
-    cardSprite: {fileID: 21300000, guid: a1b9e4143de797a49a107ec384d6abd0, type: 3}
+    cardSprite: {fileID: -7659982344447951607, guid: 5d95bb994c427984aad930d798c2e313, type: 3}
     slotType: 0
     cardType: 0
     isSelected: 0
   - cardName: 6
     damage: 0
     silence: -2
-    cardSprite: {fileID: 21300000, guid: 753b4c7cf96bd4b4f92254608f4e0117, type: 3}
+    cardSprite: {fileID: 6268964535306426721, guid: 2e3237cb8c986bb41b8f16010bc959bd, type: 3}
     slotType: 0
     cardType: 1
     isSelected: 0
   - cardName: 7
     damage: -1
     silence: -3
-    cardSprite: {fileID: 21300000, guid: 3c29f980dab57fb4aa65260f861fdaa7, type: 3}
+    cardSprite: {fileID: -3370331819445602528, guid: 0ada7dfd2707e424a907c5ebe3d2a58c, type: 3}
     slotType: 0
     cardType: 1
     isSelected: 0
   - cardName: 8
     damage: 2
     silence: 1
-    cardSprite: {fileID: 21300000, guid: 78e363877018af347a90feba0d92397e, type: 3}
+    cardSprite: {fileID: 5330849197799259274, guid: 4b60bf1f6140ddc4b80f379a74bcf89d, type: 3}
     slotType: 0
     cardType: 1
     isSelected: 0
   - cardName: 9
     damage: 3
     silence: 2
-    cardSprite: {fileID: 21300000, guid: 31f8d743a74870d4fa536a7a49b8b10a, type: 3}
+    cardSprite: {fileID: 5500769130202157668, guid: 33d4e2c6cd81de04bb5414174023bfe2, type: 3}
     slotType: 0
     cardType: 1
     isSelected: 0
   - cardName: 10
     damage: 1
     silence: -1
-    cardSprite: {fileID: 21300000, guid: 93ce5f156e4f27145a31331c089e8cd4, type: 3}
+    cardSprite: {fileID: 757958334240752611, guid: 7cd458216ec20bd4fba7d45a6437cd29, type: 3}
     slotType: 0
     cardType: 1
     isSelected: 0
@@ -29972,76 +29972,76 @@ MonoBehaviour:
   fusionTable:
   - cardAName: 1
     cardBName: 6
-    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
+    resultSprite: {fileID: 4948831076557281925, guid: 5fac2260ce941c0489b3024a7e77625d, type: 3}
   - cardAName: 1
     cardBName: 7
-    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
+    resultSprite: {fileID: 3650799718518893399, guid: e91561f93834d3b49a6302fb8e2226a1, type: 3}
   - cardAName: 1
     cardBName: 8
-    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
+    resultSprite: {fileID: -5038356407995933338, guid: 8d90506476bb9bb43a5282ea16a4ce40, type: 3}
   - cardAName: 1
     cardBName: 9
-    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
+    resultSprite: {fileID: 4583703237837355455, guid: 3bbea3a7cdf095242bb3ce7f41f749dd, type: 3}
   - cardAName: 1
     cardBName: 10
-    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
+    resultSprite: {fileID: -2023375183909232462, guid: 076c426352f1dd64e8cb949ed0867ccb, type: 3}
   - cardAName: 2
     cardBName: 6
-    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
+    resultSprite: {fileID: 91221114999022036, guid: 5715113a9788a864aac61690c2cb00d3, type: 3}
   - cardAName: 2
     cardBName: 7
-    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
+    resultSprite: {fileID: 7757618072020364322, guid: 6b10b7d832be5e04892b3c5506066946, type: 3}
   - cardAName: 2
     cardBName: 8
-    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
+    resultSprite: {fileID: -3993100051004629923, guid: e73855a6e3faa6d4a9e5f5d355f58540, type: 3}
   - cardAName: 2
     cardBName: 9
-    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
+    resultSprite: {fileID: -5208147732593505299, guid: e68c789592a9c544ab8bcc9d553033ad, type: 3}
   - cardAName: 2
     cardBName: 10
-    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
+    resultSprite: {fileID: 4791535662579269594, guid: df04ac7b166f50349b59f79f3ff7a416, type: 3}
   - cardAName: 3
     cardBName: 6
-    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
+    resultSprite: {fileID: -6089867075254821860, guid: 286018104665f444897f4affd966eaf5, type: 3}
   - cardAName: 3
     cardBName: 7
-    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
+    resultSprite: {fileID: 9179328662109355367, guid: 4eab3f80a0900ae4090df956ede06743, type: 3}
   - cardAName: 3
     cardBName: 8
-    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
+    resultSprite: {fileID: 2714273802427824408, guid: c1eccfaa35672954fa11f2d1f150306e, type: 3}
   - cardAName: 3
     cardBName: 9
-    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
+    resultSprite: {fileID: -2810519385686519796, guid: e5fa29f71d92a8a469e522ea0f3f036d, type: 3}
   - cardAName: 3
     cardBName: 10
-    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
+    resultSprite: {fileID: 4768669589802128290, guid: afb3097b4b9a2b64ab3b9338bdb9c456, type: 3}
   - cardAName: 4
     cardBName: 6
-    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
+    resultSprite: {fileID: 2401796134813193953, guid: 5958d6b8e4c076b4b8bc97c78c66e7bd, type: 3}
   - cardAName: 4
     cardBName: 7
-    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
+    resultSprite: {fileID: 5294341098916895092, guid: e9578f9339216a34684a5ecb19683d32, type: 3}
   - cardAName: 4
     cardBName: 8
-    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
+    resultSprite: {fileID: 8727007102450581498, guid: f3674815e66593247bcc8e9ea942c3b4, type: 3}
   - cardAName: 4
     cardBName: 9
-    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
+    resultSprite: {fileID: 8089284452354467121, guid: df56217ce3db4de498849f88ce458b6f, type: 3}
   - cardAName: 4
     cardBName: 10
-    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
+    resultSprite: {fileID: 8534487219730200807, guid: 5eff77c2ee5d3514d8cc4759e3991b9b, type: 3}
   - cardAName: 5
     cardBName: 6
-    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
+    resultSprite: {fileID: -4029051097270881964, guid: bbf9528690306ca46bc6526db79389c3, type: 3}
   - cardAName: 5
-    cardBName: 10
-    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
+    cardBName: 7
+    resultSprite: {fileID: -8156822784275595796, guid: d378bfef838eb284e8c2b01b8840e02c, type: 3}
   - cardAName: 5
-    cardBName: 10
-    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
+    cardBName: 8
+    resultSprite: {fileID: -3578621993672317067, guid: ff17f1cece44ead42a28acf2d2153f8f, type: 3}
   - cardAName: 5
     cardBName: 9
-    resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
+    resultSprite: {fileID: -4027805783703219133, guid: d25f6d41cde4a10428fee7d0f191c3a1, type: 3}
   - cardAName: 5
     cardBName: 10
     resultSprite: {fileID: 21300000, guid: 55aeee0dbcfd38f49aacbc51509dd53c, type: 3}
@@ -31321,14 +31321,14 @@ RectTransform:
   m_GameObject: {fileID: 1916406657}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 9.382977, y: 4.3686876, z: 1}
+  m_LocalScale: {x: 1.1326936, y: 2.7486076, z: 1.2147716}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1034412749}
+  m_Father: {fileID: 1689656791}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.0005655, y: 0.00012207031}
+  m_AnchoredPosition: {x: 0.4831543, y: 24.99998}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1916406659
