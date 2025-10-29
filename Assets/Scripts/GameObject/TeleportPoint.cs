@@ -7,7 +7,6 @@ public class TeleportPoint : MonoBehaviour
     public static event Action<int> OnTeleport;
 
     [Header("Teleport Settings")]
-    [Tooltip("ID ของชั้นปลายทางหลังจากการวาร์ป (เช่น 0=ชั้น1, 1=ชั้น2, 2=ชั้น3)")]
     public int destinationLevelID;
     public List<Transform> destinationPoints;
 
