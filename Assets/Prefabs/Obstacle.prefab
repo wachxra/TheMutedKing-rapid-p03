@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8812492897349750471}
   - component: {fileID: 6802238343251924645}
   - component: {fileID: 2835678239203352847}
+  - component: {fileID: 2245734845892181222}
   m_Layer: 0
   m_Name: Obstacle
   m_TagString: Obstacle
@@ -82,7 +83,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300110, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 08366f5bbc7f8f547834de16d675075e, type: 3}
   m_Color: {r: 0.8962264, g: 0.8962264, b: 0.8962264, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -107,6 +108,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SoundObstacle
   soundValue: 0
   radius: 3
+  grassAnimator: {fileID: 2245734845892181222}
+  shakeAnimationTrigger: Shake
+  isShakingParameter: IsShaking
 --- !u!61 &6802238343251924645
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -144,8 +148,8 @@ BoxCollider2D:
   m_Offset: {x: 0.024921507, y: 0.43562582}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.49122807, y: 0.03448276}
-    oldSize: {x: 1.78125, y: 0.90625}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.1333334, y: 1.0666667}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -180,3 +184,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &2245734845892181222
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4116061807421460063}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bb85df63adcd75648b575936b5f10202, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
