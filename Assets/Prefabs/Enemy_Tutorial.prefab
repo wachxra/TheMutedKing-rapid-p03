@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1500709556010002109}
   - component: {fileID: 6443092184335616841}
   m_Layer: 6
-  m_Name: Enemy
+  m_Name: Enemy_Tutorial
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -179,15 +179,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8df955c91752cb847bdf52fc8c11b335, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
-  maxHP: 50
+  maxHP: 10
   currentHP: 0
-  damage: 5
+  damage: 2
   minHitsInCombo: 3
-  maxHitsInCombo: 8
+  maxHitsInCombo: 5
   minTravelTime: 0.2
   maxTravelTime: 2
   attackCooldown: 1
-  moveSpeed: 5
+  moveSpeed: 0
   detectRange: 2.5
   spawnY: 0
   player: {fileID: 0}
